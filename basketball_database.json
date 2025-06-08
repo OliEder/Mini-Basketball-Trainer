@@ -1,0 +1,504 @@
+{
+  "hallen": [
+    {
+      "id": "halle_001",
+      "name": "Sporthalle Grundschule Musterstadt",
+      "verein": "Beispielverein Basketball",
+      "ausstattung": {
+        "koerbe": 2,
+        "korbhoehe_verstellbar": true,
+        "ballgroessen": [
+          3,
+          4,
+          5
+        ],
+        "huetchen": 20,
+        "reifen": 10,
+        "slalomstangen": 8,
+        "medizinbaelle": 5,
+        "sprungseile": 15,
+        "markierungswesten": 12
+      },
+      "belegungsplan": [
+        {
+          "datum": "2024-01-15",
+          "uhrzeit_start": "16:00",
+          "uhrzeit_end": "17:30",
+          "altersgruppe": "U10",
+          "trainer": "Max Mustermann"
+        },
+        {
+          "datum": "2024-01-17",
+          "uhrzeit_start": "17:00",
+          "uhrzeit_end": "18:30",
+          "altersgruppe": "U12",
+          "trainer": "Anna Beispiel"
+        }
+      ]
+    }
+  ],
+  "uebungen": [
+    {
+      "id": "ex_001",
+      "titel": "Easytown-Spiel",
+      "kategorie": "dribbeln",
+      "phase": "einfuehrung_easybasket",
+      "trainingsabschnitt": "auftakt",
+      "altersgruppen": [
+        "U8",
+        "U10"
+      ],
+      "dauer_min": 10,
+      "teilnehmer_min": 8,
+      "teilnehmer_max": 20,
+      "material": [
+        "Bälle (ein Ball pro Kind)",
+        "Reifen",
+        "Hütchen"
+      ],
+      "aufbauzeit_min": 3,
+      "beschreibung": "Alle Kinder (Autos) dürfen sich dribbelnd in der Stadt (Spielfeld) bewegen. Ausnahmen sind zwei 'Fußgängerzonen' (Zone = Drei-Sekunden-Raum).",
+      "durchfuehrung": "Kinder dribbeln frei durch die Halle, können in Reifenparkplätzen parken, Kreisverkehre umfahren, Verkehrskontrollen durchführen.",
+      "variationen": [
+        "VIP-Modus",
+        "Rettungswagen",
+        "Taxi",
+        "Bus mit Haltestellen"
+      ],
+      "coaching_tipps": [
+        "Ball liebevoll dribbeln",
+        "Blick nach vorne",
+        "Anderen ausweichen"
+      ],
+      "bbv_referenz": "DBB Easybasket-Handbuch S.16",
+      "dbb_zertifiziert": true,
+      "video_url": "",
+      "schwierigkeitsgrad": 1
+    },
+    {
+      "id": "ex_002",
+      "titel": "Freundschaftsspiel",
+      "kategorie": "dribbeln",
+      "phase": "einfuehrung_easybasket",
+      "trainingsabschnitt": "auftakt",
+      "altersgruppen": [
+        "U8",
+        "U10"
+      ],
+      "dauer_min": 8,
+      "teilnehmer_min": 6,
+      "teilnehmer_max": 16,
+      "material": [
+        "Bälle (ein Ball pro Kind)"
+      ],
+      "aufbauzeit_min": 1,
+      "beschreibung": "Kinder werden in zwei Gruppen aufgeteilt und dribbeln frei durch die Halle.",
+      "durchfuehrung": "Ein Kind aus einer Gruppe kann ein Kind aus der anderen Gruppe ansprechen, neben ihm dribbeln und sich unterhalten.",
+      "variationen": [
+        "Paare an Seitenlinien",
+        "Rollenwechsel",
+        "Weniger nette Freunde"
+      ],
+      "coaching_tipps": [
+        "Kommunikation fördern",
+        "Namen verwenden",
+        "Freundlichkeit"
+      ],
+      "bbv_referenz": "DBB Easybasket-Handbuch S.17",
+      "dbb_zertifiziert": true,
+      "video_url": "",
+      "schwierigkeitsgrad": 1
+    },
+    {
+      "id": "ex_003",
+      "titel": "Power-Slalom",
+      "kategorie": "dribbeln",
+      "phase": "einfuehrung_easybasket",
+      "trainingsabschnitt": "mittelteil",
+      "altersgruppen": [
+        "U8",
+        "U10"
+      ],
+      "dauer_min": 15,
+      "teilnehmer_min": 4,
+      "teilnehmer_max": 12,
+      "material": [
+        "Hütchen",
+        "Bälle Größe 4"
+      ],
+      "aufbauzeit_min": 2,
+      "beschreibung": "Slalom-Parcours mit Power-Games Prinzip",
+      "durchfuehrung": "Kinder dribbeln durch Hütchen-Slalom, wer die 'Power' hat startet das Spiel",
+      "variationen": [
+        "Position der Hütchen ändern",
+        "Verschiedene Handwechsel"
+      ],
+      "coaching_tipps": [
+        "Korrekte Fußstellung",
+        "Blick nach vorne",
+        "Ball kontrollieren"
+      ],
+      "bbv_referenz": "DBB Easybasket-Handbuch S.26",
+      "dbb_zertifiziert": true,
+      "video_url": "",
+      "schwierigkeitsgrad": 2
+    },
+    {
+      "id": "ex_004",
+      "titel": "Dribbling im Stand",
+      "kategorie": "dribbeln",
+      "phase": "easybasket_zu_minibasketball",
+      "trainingsabschnitt": "mittelteil",
+      "altersgruppen": [
+        "U10",
+        "U12"
+      ],
+      "dauer_min": 10,
+      "teilnehmer_min": 1,
+      "teilnehmer_max": 20,
+      "material": [
+        "Bälle (ein Ball pro Kind)"
+      ],
+      "aufbauzeit_min": 1,
+      "beschreibung": "Grundlagen des Dribblings im Stand erlernen",
+      "durchfuehrung": "Kinder dribbeln im Stand mit rechter und linker Hand, verschiedene Höhen und Rhythmen",
+      "variationen": [
+        "Im Sitzen",
+        "Im Knien",
+        "Augen schließen"
+      ],
+      "coaching_tipps": [
+        "Ball aus Handgelenk führen",
+        "Nicht schlagen",
+        "Fingerspitzen verwenden"
+      ],
+      "bbv_referenz": "DBB Mini-Leitfaden S.36",
+      "dbb_zertifiziert": true,
+      "video_url": "",
+      "schwierigkeitsgrad": 1
+    },
+    {
+      "id": "ex_005",
+      "titel": "Grundpassarten",
+      "kategorie": "passen_fangen",
+      "phase": "easybasket_zu_minibasketball",
+      "trainingsabschnitt": "mittelteil",
+      "altersgruppen": [
+        "U10",
+        "U12"
+      ],
+      "dauer_min": 15,
+      "teilnehmer_min": 2,
+      "teilnehmer_max": 20,
+      "material": [
+        "Bälle"
+      ],
+      "aufbauzeit_min": 2,
+      "beschreibung": "Erlernen der Grundpassarten: Druckpass, Bodenpass, Überkopfpass",
+      "durchfuehrung": "Paarweise gegenüberstehen, verschiedene Passarten üben",
+      "variationen": [
+        "Entfernung variieren",
+        "In der Bewegung",
+        "Mit Störer"
+      ],
+      "coaching_tipps": [
+        "Zur Brust zielen",
+        "Beide Hände verwenden",
+        "Schritt zum Pass"
+      ],
+      "bbv_referenz": "DBB Mini-Leitfaden S.45",
+      "dbb_zertifiziert": true,
+      "video_url": "",
+      "schwierigkeitsgrad": 2
+    },
+    {
+      "id": "ex_006",
+      "titel": "Korbleger beidseitig",
+      "kategorie": "werfen",
+      "phase": "easybasket_zu_minibasketball",
+      "trainingsabschnitt": "mittelteil",
+      "altersgruppen": [
+        "U10",
+        "U12"
+      ],
+      "dauer_min": 20,
+      "teilnehmer_min": 4,
+      "teilnehmer_max": 12,
+      "material": [
+        "Bälle",
+        "Körbe auf 2,60m"
+      ],
+      "aufbauzeit_min": 3,
+      "beschreibung": "Korbleger von rechts und links erlernen",
+      "durchfuehrung": "Systematisches Erlernen: rechts-links-Rhythmus, Absprung, weiches Auflegen",
+      "variationen": [
+        "Aus dem Dribbeln",
+        "Nach Pass",
+        "Verschiedene Winkel"
+      ],
+      "coaching_tipps": [
+        "Rechts-links-Rhythmus",
+        "Knie hoch",
+        "Sanft am Brett"
+      ],
+      "bbv_referenz": "DBB Mini-Leitfaden S.64",
+      "dbb_zertifiziert": true,
+      "video_url": "",
+      "schwierigkeitsgrad": 3
+    },
+    {
+      "id": "ex_007",
+      "titel": "Viereck-Lauf",
+      "kategorie": "koordination",
+      "phase": "easybasket_erfahrung",
+      "trainingsabschnitt": "auftakt",
+      "altersgruppen": [
+        "U8",
+        "U10",
+        "U12"
+      ],
+      "dauer_min": 8,
+      "teilnehmer_min": 8,
+      "teilnehmer_max": 20,
+      "material": [
+        "Hütchen",
+        "evtl. Bälle"
+      ],
+      "aufbauzeit_min": 2,
+      "beschreibung": "Koordinative Laufübung im Viereck mit verschiedenen Bewegungsformen",
+      "durchfuehrung": "Viereck abstecken, verschiedene Laufarten pro Seite",
+      "variationen": [
+        "Mit Ball",
+        "Rückwärts",
+        "Seitlich",
+        "Hüpfen"
+      ],
+      "coaching_tipps": [
+        "Saubere Ausführung",
+        "Tempowechsel",
+        "Armeinsatz"
+      ],
+      "bbv_referenz": "DBB Mini-Leitfaden S.66",
+      "dbb_zertifiziert": true,
+      "video_url": "",
+      "schwierigkeitsgrad": 2
+    },
+    {
+      "id": "ex_008",
+      "titel": "Tigerball",
+      "kategorie": "kleine_spiele",
+      "phase": "easybasket_zu_minibasketball",
+      "trainingsabschnitt": "schlussphase",
+      "altersgruppen": [
+        "U10",
+        "U12"
+      ],
+      "dauer_min": 15,
+      "teilnehmer_min": 6,
+      "teilnehmer_max": 12,
+      "material": [
+        "1 Ball",
+        "Markierungen"
+      ],
+      "aufbauzeit_min": 2,
+      "beschreibung": "Passsspiel in der Gruppe, ein Tiger versucht Ball zu erobern",
+      "durchfuehrung": "Kreis bilden, Ball zuspielen, Tiger in der Mitte versucht Ball zu berühren",
+      "variationen": [
+        "Mehrere Tiger",
+        "Verschiedene Passarten",
+        "In Bewegung"
+      ],
+      "coaching_tipps": [
+        "Schnelle Pässe",
+        "Freilaufen",
+        "Übersicht behalten"
+      ],
+      "bbv_referenz": "DBB Spiele mit dem roten Ball",
+      "dbb_zertifiziert": true,
+      "video_url": "",
+      "schwierigkeitsgrad": 2
+    },
+    {
+      "id": "ex_009",
+      "titel": "Verteidigungsgrundstellung",
+      "kategorie": "taktik",
+      "phase": "easybasket_zu_minibasketball",
+      "trainingsabschnitt": "mittelteil",
+      "altersgruppen": [
+        "U10",
+        "U12"
+      ],
+      "dauer_min": 12,
+      "teilnehmer_min": 2,
+      "teilnehmer_max": 16,
+      "material": [
+        "Evtl. Bälle"
+      ],
+      "aufbauzeit_min": 1,
+      "beschreibung": "Grundlagen der Verteidigungshaltung und -bewegung",
+      "durchfuehrung": "Grundstellung üben: breite Basis, tiefe Haltung, aktive Hände",
+      "variationen": [
+        "Mit Angreifer",
+        "In Bewegung",
+        "Mit Ball"
+      ],
+      "coaching_tipps": [
+        "Tiefe Haltung",
+        "Aktive Hände",
+        "Auf Fußballen"
+      ],
+      "bbv_referenz": "BBV-Skript Verteidigung",
+      "dbb_zertifiziert": true,
+      "video_url": "",
+      "schwierigkeitsgrad": 2
+    },
+    {
+      "id": "ex_010",
+      "titel": "Ballhandling Grundlagen",
+      "kategorie": "dribbeln",
+      "phase": "einfuehrung_easybasket",
+      "trainingsabschnitt": "mittelteil",
+      "altersgruppen": [
+        "U8",
+        "U10"
+      ],
+      "dauer_min": 10,
+      "teilnehmer_min": 1,
+      "teilnehmer_max": 20,
+      "material": [
+        "Bälle (ein Ball pro Kind)"
+      ],
+      "aufbauzeit_min": 1,
+      "beschreibung": "Grundlegende Ballgewöhnung und einfaches Ballhandling",
+      "durchfuehrung": "Ball um Körper kreisen, zwischen Beinen, Achter-Bewegungen",
+      "variationen": [
+        "Augen schließen",
+        "Verschiedene Richtungen",
+        "Tempowechsel"
+      ],
+      "coaching_tipps": [
+        "Ball fest greifen",
+        "Konzentration",
+        "Beidhändigkeit"
+      ],
+      "bbv_referenz": "BBV Thema 4: Ballhandling",
+      "dbb_zertifiziert": true,
+      "video_url": "",
+      "schwierigkeitsgrad": 1
+    }
+  ],
+  "trainingsplaene": [
+    {
+      "id": "plan_001",
+      "titel": "U10 Einführung Dribbling (90 Min)",
+      "altersgruppe": "U10",
+      "dauer_min": 90,
+      "teilnehmer_anzahl": 12,
+      "schwerpunkt": "Einführung Dribbling",
+      "halle_id": "halle_001",
+      "erstellt_am": "2024-01-10T10:00:00Z",
+      "trainer": "Max Mustermann",
+      "trainingsblöcke": [
+        {
+          "phase": "Aufwärmen",
+          "dauer_min": 15,
+          "uebung_ids": [
+            "ex_007",
+            "ex_001"
+          ],
+          "ziele": [
+            "Allgemeine Aktivierung",
+            "Ballgewöhnung"
+          ]
+        },
+        {
+          "phase": "Schwerpunkt 1",
+          "dauer_min": 20,
+          "uebung_ids": [
+            "ex_010",
+            "ex_004"
+          ],
+          "ziele": [
+            "Ballhandling",
+            "Dribbling im Stand"
+          ]
+        },
+        {
+          "phase": "Zwischenblock",
+          "dauer_min": 5,
+          "uebung_ids": [],
+          "ziele": [
+            "Pause",
+            "Freiwürfe"
+          ]
+        },
+        {
+          "phase": "Schwerpunkt 2",
+          "dauer_min": 20,
+          "uebung_ids": [
+            "ex_003"
+          ],
+          "ziele": [
+            "Dribbling in Bewegung"
+          ]
+        },
+        {
+          "phase": "Zwischenblock 2",
+          "dauer_min": 5,
+          "uebung_ids": [],
+          "ziele": [
+            "Erholung"
+          ]
+        },
+        {
+          "phase": "Spiel",
+          "dauer_min": 20,
+          "uebung_ids": [
+            "ex_008"
+          ],
+          "ziele": [
+            "Spielanwendung",
+            "Spaß"
+          ]
+        },
+        {
+          "phase": "Cool-down",
+          "dauer_min": 5,
+          "uebung_ids": [],
+          "ziele": [
+            "Entspannung",
+            "Reflexion"
+          ]
+        }
+      ]
+    }
+  ],
+  "spieler": [
+    {
+      "id": "player_001",
+      "vorname": "Max",
+      "nachname": "Beispiel",
+      "geburtsdatum": "2014-03-15",
+      "dbb_nummer": "123456789",
+      "altersgruppe": "U10",
+      "anwesenheit": [
+        {
+          "datum": "2024-01-10",
+          "anwesend": true,
+          "bemerkungen": "Sehr motiviert"
+        }
+      ],
+      "faehigkeiten": {
+        "dribbeln": 2,
+        "passen": 2,
+        "werfen": 1,
+        "verteidigen": 1,
+        "koordination": 3
+      },
+      "ziele": [
+        "Verbesserung Wurftechnik",
+        "Beidhändiges Dribbling"
+      ]
+    }
+  ]
+}

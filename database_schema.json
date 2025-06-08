@@ -1,0 +1,636 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "MiniBasket Trainer Pro Database Schema",
+  "description": "Schema für die Basketball-Trainer-App basierend auf BBV/DBB-Richtlinien",
+  "properties": {
+    "hallen": {
+      "type": "array",
+      "description": "Liste aller verfügbaren Sporthallen",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Eindeutige Hallen-ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name der Halle"
+          },
+          "adresse": {
+            "type": "string",
+            "description": "Vollständige Adresse"
+          },
+          "größe": {
+            "type": "string",
+            "enum": [
+              "klein",
+              "mittel",
+              "groß"
+            ],
+            "description": "Hallengröße"
+          },
+          "körbe": {
+            "type": "object",
+            "properties": {
+              "anzahl": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "Anzahl der Körbe"
+              },
+              "verstellbar": {
+                "type": "boolean",
+                "description": "Sind die Körbe höhenverstellbar"
+              },
+              "höhen": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "description": "Verfügbare Korbhöhen in Metern"
+              }
+            },
+            "required": [
+              "anzahl",
+              "verstellbar",
+              "höhen"
+            ]
+          },
+          "inventar": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "item": {
+                  "type": "string",
+                  "description": "Name des Gegenstands"
+                },
+                "anzahl": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "description": "Verfügbare Anzahl"
+                },
+                "zustand": {
+                  "type": "string",
+                  "enum": [
+                    "sehr gut",
+                    "gut",
+                    "mittel",
+                    "schlecht"
+                  ],
+                  "description": "Zustand des Materials"
+                }
+              },
+              "required": [
+                "item",
+                "anzahl",
+                "zustand"
+              ]
+            }
+          },
+          "zeiten": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "tag": {
+                  "type": "string",
+                  "enum": [
+                    "Montag",
+                    "Dienstag",
+                    "Mittwoch",
+                    "Donnerstag",
+                    "Freitag",
+                    "Samstag",
+                    "Sonntag"
+                  ]
+                },
+                "von": {
+                  "type": "string",
+                  "pattern": "^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$",
+                  "description": "Startzeit im Format HH:MM"
+                },
+                "bis": {
+                  "type": "string",
+                  "pattern": "^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$",
+                  "description": "Endzeit im Format HH:MM"
+                },
+                "gruppe": {
+                  "type": "string",
+                  "description": "Trainingsgruppe"
+                }
+              },
+              "required": [
+                "tag",
+                "von",
+                "bis",
+                "gruppe"
+              ]
+            }
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "adresse",
+          "größe",
+          "körbe",
+          "inventar",
+          "zeiten"
+        ]
+      }
+    },
+    "übungen": {
+      "type": "array",
+      "description": "Datenbank aller Basketball-Übungen basierend auf BBV/DBB-Lehrwerken",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Eindeutige Übungs-ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name der Übung"
+          },
+          "kategorie": {
+            "type": "string",
+            "enum": [
+              "Easybasket",
+              "Koordination",
+              "Dribbeln",
+              "Passen/Fangen",
+              "Werfen",
+              "Verteidigung",
+              "Kleine Spiele",
+              "Teambuilding"
+            ],
+            "description": "Hauptkategorie der Übung"
+          },
+          "phase": {
+            "type": "string",
+            "enum": [
+              "Auftakt",
+              "Mittelteil",
+              "Schlussphase"
+            ],
+            "description": "Trainingsphase (für Easybasket-Übungen)"
+          },
+          "beschreibung": {
+            "type": "string",
+            "description": "Kurze Beschreibung der Übung"
+          },
+          "altersgruppe": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "U7",
+                "U8",
+                "U10",
+                "U12"
+              ]
+            },
+            "description": "Geeignete Altersgruppen"
+          },
+          "material": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Benötigtes Material"
+          },
+          "teilnehmer": {
+            "type": "string",
+            "description": "Anzahl Teilnehmer (z.B. '8-16' oder 'beliebig')"
+          },
+          "dauer": {
+            "type": "string",
+            "description": "Geschätzte Dauer (z.B. '10-15 Min')"
+          },
+          "durchführung": {
+            "type": "string",
+            "description": "Detaillierte Anleitung zur Durchführung"
+          },
+          "ziele": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Lernziele der Übung"
+          },
+          "variationen": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Mögliche Variationen der Übung"
+          },
+          "schwierigkeitsgrad": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5,
+            "description": "Schwierigkeitsgrad 1-5"
+          },
+          "video_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "YouTube-Video URL (optional)"
+          },
+          "quelle": {
+            "type": "string",
+            "description": "Quelle der Übung (z.B. 'DBB Easybasket-Handbuch')"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "kategorie",
+          "beschreibung",
+          "altersgruppe",
+          "material",
+          "teilnehmer",
+          "dauer",
+          "durchführung"
+        ]
+      }
+    },
+    "trainingsvorlagen": {
+      "type": "array",
+      "description": "Vordefinierte Trainingsvorlagen",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Eindeutige Vorlagen-ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name der Vorlage"
+          },
+          "beschreibung": {
+            "type": "string",
+            "description": "Beschreibung der Vorlage"
+          },
+          "dauer": {
+            "type": "integer",
+            "description": "Gesamtdauer in Minuten"
+          },
+          "altersgruppe": {
+            "type": "string",
+            "enum": [
+              "U7",
+              "U8",
+              "U10",
+              "U12"
+            ],
+            "description": "Zielgruppe"
+          },
+          "struktur": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "block": {
+                  "type": "string",
+                  "description": "Name des Trainingsblocks"
+                },
+                "dauer": {
+                  "type": "integer",
+                  "description": "Dauer des Blocks in Minuten"
+                },
+                "kategorie": {
+                  "type": "string",
+                  "description": "Kategorie des Trainingsblocks"
+                },
+                "übungen": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  },
+                  "description": "Array von Übungs-IDs für diesen Block"
+                }
+              },
+              "required": [
+                "block",
+                "dauer",
+                "kategorie"
+              ]
+            }
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "beschreibung",
+          "dauer",
+          "altersgruppe",
+          "struktur"
+        ]
+      }
+    },
+    "spieler": {
+      "type": "array",
+      "description": "Spielerdatenbank (lokal gespeichert)",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Eindeutige Spieler-ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Vollständiger Name"
+          },
+          "geburtsdatum": {
+            "type": "string",
+            "format": "date",
+            "description": "Geburtsdatum im Format YYYY-MM-DD"
+          },
+          "spielernummer": {
+            "type": "string",
+            "description": "DBB-Spielernummer (optional)"
+          },
+          "gruppe": {
+            "type": "string",
+            "enum": [
+              "U7",
+              "U8",
+              "U10",
+              "U12"
+            ],
+            "description": "Aktuelle Trainingsgruppe"
+          },
+          "anwesenheit": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "datum": {
+                  "type": "string",
+                  "format": "date",
+                  "description": "Trainingsdatum"
+                },
+                "anwesend": {
+                  "type": "boolean",
+                  "description": "War der Spieler anwesend"
+                }
+              },
+              "required": [
+                "datum",
+                "anwesend"
+              ]
+            }
+          },
+          "bewertungen": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "fertigkeit": {
+                  "type": "string",
+                  "enum": [
+                    "Dribbeln",
+                    "Passen",
+                    "Werfen",
+                    "Verteidigung",
+                    "Koordination",
+                    "Teamwork"
+                  ],
+                  "description": "Bewertete Fertigkeit"
+                },
+                "wert": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 5,
+                  "description": "Bewertung 1-5 Sterne"
+                },
+                "datum": {
+                  "type": "string",
+                  "format": "date",
+                  "description": "Bewertungsdatum"
+                },
+                "notizen": {
+                  "type": "string",
+                  "description": "Zusätzliche Notizen"
+                }
+              },
+              "required": [
+                "fertigkeit",
+                "wert",
+                "datum"
+              ]
+            }
+          },
+          "ziele": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "ziel": {
+                  "type": "string",
+                  "description": "Beschreibung des Ziels"
+                },
+                "erstellt": {
+                  "type": "string",
+                  "format": "date",
+                  "description": "Datum der Zielerstellung"
+                },
+                "erreicht": {
+                  "type": "boolean",
+                  "description": "Wurde das Ziel erreicht"
+                },
+                "erreicht_am": {
+                  "type": "string",
+                  "format": "date",
+                  "description": "Datum der Zielerreichung"
+                }
+              },
+              "required": [
+                "ziel",
+                "erstellt",
+                "erreicht"
+              ]
+            }
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "geburtsdatum",
+          "gruppe",
+          "anwesenheit",
+          "bewertungen"
+        ]
+      }
+    },
+    "regeln": {
+      "type": "object",
+      "description": "BBV/DBB-Regelwerk für verschiedene Altersklassen",
+      "properties": {
+        "U8": {
+          "type": "object",
+          "properties": {
+            "spielerzahl": {
+              "type": "string",
+              "description": "Anzahl Spieler pro Team"
+            },
+            "korbhöhe": {
+              "type": "string",
+              "description": "Offizielle Korbhöhe"
+            },
+            "ballgröße": {
+              "type": "string",
+              "description": "Zugelassene Ballgrößen"
+            },
+            "freiwurf": {
+              "type": "string",
+              "description": "Freiwurf-Regelung"
+            },
+            "verteidigung": {
+              "type": "string",
+              "description": "Verteidigungsregeln"
+            },
+            "spielzeit": {
+              "type": "string",
+              "description": "Spieldauer und Pausen"
+            },
+            "besonderheiten": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Besondere Regeln für U8"
+            }
+          }
+        },
+        "U10": {
+          "type": "object",
+          "properties": {
+            "spielerzahl": {
+              "type": "string"
+            },
+            "korbhöhe": {
+              "type": "string"
+            },
+            "ballgröße": {
+              "type": "string"
+            },
+            "freiwurf": {
+              "type": "string"
+            },
+            "verteidigung": {
+              "type": "string"
+            },
+            "spielzeit": {
+              "type": "string"
+            },
+            "besonderheiten": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "U12": {
+          "type": "object",
+          "properties": {
+            "spielerzahl": {
+              "type": "string"
+            },
+            "korbhöhe": {
+              "type": "string"
+            },
+            "ballgröße": {
+              "type": "string"
+            },
+            "freiwurf": {
+              "type": "string"
+            },
+            "verteidigung": {
+              "type": "string"
+            },
+            "spielzeit": {
+              "type": "string"
+            },
+            "besonderheiten": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "lehrwerke": {
+      "type": "object",
+      "description": "Referenzen zu den verwendeten BBV/DBB-Lehrwerken",
+      "properties": {
+        "easybasket_handbuch": {
+          "type": "object",
+          "properties": {
+            "titel": {
+              "type": "string"
+            },
+            "herausgeber": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            },
+            "beschreibung": {
+              "type": "string"
+            }
+          }
+        },
+        "mini_leitfaden": {
+          "type": "object",
+          "properties": {
+            "titel": {
+              "type": "string"
+            },
+            "herausgeber": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            },
+            "beschreibung": {
+              "type": "string"
+            }
+          }
+        },
+        "spiele_roter_ball": {
+          "type": "object",
+          "properties": {
+            "titel": {
+              "type": "string"
+            },
+            "herausgeber": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            },
+            "beschreibung": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "hallen",
+    "übungen",
+    "trainingsvorlagen",
+    "spieler",
+    "regeln"
+  ]
+}

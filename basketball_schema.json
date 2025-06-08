@@ -1,0 +1,322 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "hallen": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "verein": {
+            "type": "string"
+          },
+          "ausstattung": {
+            "type": "object",
+            "properties": {
+              "koerbe": {
+                "type": "number"
+              },
+              "korbhoehe_verstellbar": {
+                "type": "boolean"
+              },
+              "ballgroessen": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "huetchen": {
+                "type": "number"
+              },
+              "reifen": {
+                "type": "number"
+              },
+              "slalomstangen": {
+                "type": "number"
+              },
+              "medizinbaelle": {
+                "type": "number"
+              },
+              "sprungseile": {
+                "type": "number"
+              },
+              "markierungswesten": {
+                "type": "number"
+              }
+            }
+          },
+          "belegungsplan": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "datum": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "uhrzeit_start": {
+                  "type": "string"
+                },
+                "uhrzeit_end": {
+                  "type": "string"
+                },
+                "altersgruppe": {
+                  "type": "string"
+                },
+                "trainer": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "uebungen": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "titel": {
+            "type": "string"
+          },
+          "kategorie": {
+            "type": "string",
+            "enum": [
+              "dribbeln",
+              "passen_fangen",
+              "werfen",
+              "koordination",
+              "kleine_spiele",
+              "taktik"
+            ]
+          },
+          "phase": {
+            "type": "string",
+            "enum": [
+              "einfuehrung_easybasket",
+              "easybasket_erfahrung",
+              "easybasket_zu_minibasketball"
+            ]
+          },
+          "trainingsabschnitt": {
+            "type": "string",
+            "enum": [
+              "auftakt",
+              "mittelteil",
+              "schlussphase"
+            ]
+          },
+          "altersgruppen": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "dauer_min": {
+            "type": "number"
+          },
+          "teilnehmer_min": {
+            "type": "number"
+          },
+          "teilnehmer_max": {
+            "type": "number"
+          },
+          "material": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "aufbauzeit_min": {
+            "type": "number"
+          },
+          "beschreibung": {
+            "type": "string"
+          },
+          "durchfuehrung": {
+            "type": "string"
+          },
+          "variationen": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "coaching_tipps": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "bbv_referenz": {
+            "type": "string"
+          },
+          "dbb_zertifiziert": {
+            "type": "boolean"
+          },
+          "video_url": {
+            "type": "string"
+          },
+          "schwierigkeitsgrad": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 5
+          }
+        }
+      }
+    },
+    "trainingsplaene": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "titel": {
+            "type": "string"
+          },
+          "altersgruppe": {
+            "type": "string"
+          },
+          "dauer_min": {
+            "type": "number"
+          },
+          "teilnehmer_anzahl": {
+            "type": "number"
+          },
+          "schwerpunkt": {
+            "type": "string"
+          },
+          "halle_id": {
+            "type": "string"
+          },
+          "erstellt_am": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "trainer": {
+            "type": "string"
+          },
+          "trainingsblöcke": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "phase": {
+                  "type": "string"
+                },
+                "dauer_min": {
+                  "type": "number"
+                },
+                "uebung_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "ziele": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "spieler": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "vorname": {
+            "type": "string"
+          },
+          "nachname": {
+            "type": "string"
+          },
+          "geburtsdatum": {
+            "type": "string",
+            "format": "date"
+          },
+          "dbb_nummer": {
+            "type": "string"
+          },
+          "altersgruppe": {
+            "type": "string"
+          },
+          "anwesenheit": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "datum": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "anwesend": {
+                  "type": "boolean"
+                },
+                "bemerkungen": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "faehigkeiten": {
+            "type": "object",
+            "properties": {
+              "dribbeln": {
+                "type": "number",
+                "minimum": 1,
+                "maximum": 5
+              },
+              "passen": {
+                "type": "number",
+                "minimum": 1,
+                "maximum": 5
+              },
+              "werfen": {
+                "type": "number",
+                "minimum": 1,
+                "maximum": 5
+              },
+              "verteidigen": {
+                "type": "number",
+                "minimum": 1,
+                "maximum": 5
+              },
+              "koordination": {
+                "type": "number",
+                "minimum": 1,
+                "maximum": 5
+              }
+            }
+          },
+          "ziele": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}
