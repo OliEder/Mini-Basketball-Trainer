@@ -3,108 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minibasketball Trainer - BBV Trainingsplaner</title>
+    <title>Minibasketball Trainer</title>
+    <meta name="description" content="Progressive Web App für Minibasketball-Trainer (U8-U12) mit YouTube-Videos und BBV-Schwerpunkten">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#21808D">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="app">
-        <!-- Navigation Header -->
+        <!-- Header -->
         <header class="header">
             <div class="container">
-                <div class="header__content flex items-center justify-between">
-                    <h1 class="header__title">Minibasketball Trainer</h1>
-                    <nav class="nav">
-                        <button class="nav__item nav__item--active" data-section="dashboard">Dashboard</button>
-                        <button class="nav__item" data-section="planner">Trainingsplaner</button>
-                        <button class="nav__item" data-section="exercises">Übungen</button>
-                        <button class="nav__item" data-section="halls">Hallen</button>
-                    </nav>
-                </div>
+                <h1 class="header__title">🏀 Minibasketball Trainer</h1>
+                <button class="btn btn--secondary btn--sm" id="settingsBtn">Einstellungen</button>
             </div>
         </header>
 
+        <!-- Main Content -->
         <main class="main">
-            <!-- Dashboard Section -->
+            <!-- Dashboard -->
             <section id="dashboard" class="section section--active">
                 <div class="container">
                     <div class="dashboard">
-                        <h2 class="dashboard__title">BBV-Trainingsplaner für Minibasketball</h2>
-                        <p class="dashboard__subtitle">Erstellen Sie strukturierte 90-Minuten-Trainingseinheiten nach dem bewährten Schema: Lockeres Spiel → Technik → Einspiel</p>
+                        <h2 class="dashboard__title">Dashboard</h2>
+                        <p class="dashboard__subtitle">Progressive Web App für Minibasketball-Trainer (U8-U12) mit echten YouTube-Videos</p>
                         
                         <div class="dashboard__grid">
-                            <div class="card dashboard__card" data-action="planner">
+                            <div class="dashboard__card card" data-section="halls">
                                 <div class="card__body">
-                                    <h3>🏀 Trainingsplaner</h3>
-                                    <p>Wählen Sie einen der 30 BBV-Schwerpunkte und erstellen Sie automatisch strukturierte 90-Minuten-Trainingseinheiten</p>
-                                    <div class="dashboard__features">
-                                        <small>✓ Alle 30 BBV-Schwerpunkte</small><br>
-                                        <small>✓ Automatische Strukturierung</small><br>
-                                        <small>✓ Altersgerechte Übungsauswahl</small>
-                                    </div>
-                                    <button class="btn btn--primary btn--lg">Planer öffnen</button>
+                                    <div class="dashboard__card-icon">🏟️</div>
+                                    <h3>Hallenverwaltung</h3>
+                                    <p>Verwalte Trainingsstätten und Equipment-Inventar mit Templates</p>
                                 </div>
                             </div>
                             
-                            <div class="card dashboard__card" data-action="exercises">
+                            <div class="dashboard__card card" data-section="exercises">
                                 <div class="card__body">
-                                    <h3>📚 Übungsdatenbank</h3>
-                                    <p>Durchsuchen Sie über 50 Übungen, die den BBV-Schwerpunkten zugeordnet sind</p>
-                                    <div class="dashboard__features">
-                                        <small>✓ Nach Schwerpunkt filtern</small><br>
-                                        <small>✓ Altersgruppen-spezifisch</small><br>
-                                        <small>✓ Material-Übersicht</small>
-                                    </div>
-                                    <button class="btn btn--secondary">Übungen anzeigen</button>
+                                    <div class="dashboard__card-icon">📚</div>
+                                    <h3>Übungsdatenbank</h3>
+                                    <p>8 Übungen mit echten YouTube-Videos von DBB, FC Bayern & ALBAthek</p>
                                 </div>
                             </div>
                             
-                            <div class="card dashboard__card" data-action="halls">
+                            <div class="dashboard__card card" data-section="planner">
                                 <div class="card__body">
-                                    <h3>🏢 Hallenmanagement</h3>
-                                    <p>Verwalten Sie Ihre Trainingsstätten und berücksichtigen Sie verfügbares Material bei der Planung</p>
-                                    <div class="dashboard__features">
-                                        <small>✓ Material-Inventar</small><br>
-                                        <small>✓ Übungsanpassung</small><br>
-                                        <small>✓ Mehrere Hallen</small>
-                                    </div>
-                                    <button class="btn btn--secondary">Hallen verwalten</button>
+                                    <div class="dashboard__card-icon">📋</div>
+                                    <h3>Trainingsplaner</h3>
+                                    <p>BBV-konforme 90-Min-Struktur automatisch erstellen</p>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="dashboard__info">
-                            <h3>Das BBV-Trainingsschema</h3>
-                            <div class="schema-overview">
-                                <div class="schema-step">
-                                    <div class="schema-step__time">20 Min</div>
-                                    <div class="schema-step__content">
-                                        <h4>Aufwärmen</h4>
-                                        <p>Lockere Spiele, allgemeine Aktivierung</p>
-                                    </div>
-                                </div>
-                                <div class="schema-arrow">→</div>
-                                <div class="schema-step">
-                                    <div class="schema-step__time">25 Min</div>
-                                    <div class="schema-step__content">
-                                        <h4>Schwerpunkt-Technik</h4>
-                                        <p>Methodische Übungsreihe</p>
-                                    </div>
-                                </div>
-                                <div class="schema-arrow">→</div>
-                                <div class="schema-step">
-                                    <div class="schema-step__time">20 Min</div>
-                                    <div class="schema-step__content">
-                                        <h4>Einspiel</h4>
-                                        <p>Anwendung der gelernten Technik</p>
-                                    </div>
-                                </div>
-                                <div class="schema-arrow">→</div>
-                                <div class="schema-step">
-                                    <div class="schema-step__time">15 Min</div>
-                                    <div class="schema-step__content">
-                                        <h4>Freispiel</h4>
-                                        <p>3v3 mit Schwerpunkt-Regeln</p>
-                                    </div>
+                            
+                            <div class="dashboard__card card" data-section="players">
+                                <div class="card__body">
+                                    <div class="dashboard__card-icon">👥</div>
+                                    <h3>Spielerverwaltung</h3>
+                                    <p>DSGVO-konforme lokale Datenspeicherung</p>
                                 </div>
                             </div>
                         </div>
@@ -112,184 +65,225 @@
                 </div>
             </section>
 
-            <!-- Training Planner Section -->
-            <section id="planner" class="section">
-                <div class="container">
-                    <div class="planner">
-                        <h2>Trainingsplaner - 90 Minuten strukturiert</h2>
-                        
-                        <div class="planner__form">
-                            <div class="form-group">
-                                <label class="form-label" for="schwerpunkt">
-                                    <strong>BBV-Trainingsschwerpunkt auswählen</strong>
-                                    <small>Wählen Sie einen der 30 offiziellen BBV-Schwerpunkte</small>
-                                </label>
-                                <select id="schwerpunkt" class="form-control">
-                                    <option value="">Schwerpunkt wählen...</option>
-                                </select>
-                            </div>
-                            
-                            <div class="planner__parameters flex gap-16">
-                                <div class="form-group">
-                                    <label class="form-label" for="altersgruppe">Altersgruppe</label>
-                                    <select id="altersgruppe" class="form-control">
-                                        <option value="U8">U8 (6-8 Jahre)</option>
-                                        <option value="U10">U10 (8-10 Jahre)</option>
-                                        <option value="U12">U12 (10-12 Jahre)</option>
-                                    </select>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label class="form-label" for="teilnehmer">Anzahl Teilnehmer</label>
-                                    <select id="teilnehmer" class="form-control">
-                                        <option value="6-8">6-8 Spieler</option>
-                                        <option value="9-12">9-12 Spieler</option>
-                                        <option value="13-16">13-16 Spieler</option>
-                                        <option value="17+">17+ Spieler</option>
-                                    </select>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label class="form-label" for="halle">Trainingshalle</label>
-                                    <select id="halle" class="form-control">
-                                        <option value="">Halle wählen...</option>
-                                    </select>
-                                </div>
-                            </div>
-                            
-                            <div class="planner__action">
-                                <button id="generatePlan" class="btn btn--primary btn--lg btn--full-width">
-                                    🏀 Trainingsplan generieren
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Training Plan Display -->
-                        <div id="trainingPlan" class="training-plan hidden">
-                            <h3>Ihr strukturierter 90-Minuten Trainingsplan</h3>
-                            <div class="training-plan__header">
-                                <div class="training-plan__info">
-                                    <span class="status status--info" id="planSchwerpunkt"></span>
-                                    <span class="status status--success" id="planAltersgruppe"></span>
-                                    <span class="status status--warning">90 Minuten</span>
-                                </div>
-                            </div>
-                            
-                            <div class="training-blocks" id="trainingBlocks">
-                                <!-- Training blocks will be generated here -->
-                            </div>
-                            
-                            <div class="training-plan__actions">
-                                <button class="btn btn--primary" id="exportPlan">📄 Plan exportieren</button>
-                                <button class="btn btn--outline" id="newPlan">🆕 Neuen Plan erstellen</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Exercises Section -->
-            <section id="exercises" class="section">
-                <div class="container">
-                    <div class="exercises">
-                        <h2>Übungsdatenbank - Nach BBV-Schwerpunkten</h2>
-                        
-                        <div class="exercises__filters flex gap-16">
-                            <div class="form-group">
-                                <label class="form-label" for="filterCategory">Kategorie</label>
-                                <select id="filterCategory" class="form-control">
-                                    <option value="">Alle Kategorien</option>
-                                    <option value="Lockeres Spiel">Lockeres Spiel</option>
-                                    <option value="Technik">Technik</option>
-                                    <option value="Einspiel">Einspiel</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label" for="filterAge">Altersgruppe</label>
-                                <select id="filterAge" class="form-control">
-                                    <option value="">Alle Altersgruppen</option>
-                                    <option value="U8">U8</option>
-                                    <option value="U10">U10</option>
-                                    <option value="U12">U12</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label" for="filterSchwerpunkt">BBV-Schwerpunkt</label>
-                                <select id="filterSchwerpunkt" class="form-control">
-                                    <option value="">Alle Schwerpunkte</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="exercises__grid" id="exercisesList">
-                            <!-- Exercises will be loaded here -->
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Halls Section -->
+            <!-- Hallenverwaltung -->
             <section id="halls" class="section">
                 <div class="container">
-                    <div class="halls">
-                        <h2>Hallenmanagement</h2>
-                        <p class="halls__subtitle">Verwalten Sie Ihre Trainingsstätten und das verfügbare Material für eine optimale Trainingsplanung.</p>
-                        
-                        <div class="halls__grid" id="hallsList">
-                            <!-- Halls will be loaded here -->
+                    <div class="section__header">
+                        <button class="btn btn--outline" id="backToHalls">← Zurück</button>
+                        <h2>Hallenverwaltung</h2>
+                        <button class="btn btn--primary" id="addHallBtn">Neue Halle</button>
+                    </div>
+                    
+                    <div id="hallsList" class="halls-list">
+                        <!-- Halls will be loaded here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Übungsdatenbank -->
+            <section id="exercises" class="section">
+                <div class="container">
+                    <div class="section__header">
+                        <button class="btn btn--outline" id="backToExercises">← Zurück</button>
+                        <h2>Übungsdatenbank</h2>
+                    </div>
+                    
+                    <div class="exercises__filters">
+                        <div class="form-group">
+                            <label class="form-label">Kategorie</label>
+                            <select class="form-control" id="categoryFilter">
+                                <option value="">Alle Kategorien</option>
+                                <option value="Technik">Technik</option>
+                                <option value="Taktik">Taktik</option>
+                                <option value="Komplex">Komplex</option>
+                            </select>
                         </div>
                         
-                        <div class="halls__actions">
-                            <button class="btn btn--primary btn--lg" id="addHall">
-                                ➕ Neue Halle hinzufügen
-                            </button>
+                        <div class="form-group">
+                            <label class="form-label">Altersgruppe</label>
+                            <select class="form-control" id="ageFilter">
+                                <option value="">Alle Altersgruppen</option>
+                                <option value="U8">U8</option>
+                                <option value="U10">U10</option>
+                                <option value="U12">U12</option>
+                            </select>
                         </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Quelle</label>
+                            <select class="form-control" id="sourceFilter">
+                                <option value="">Alle Quellen</option>
+                                <option value="DBB Mini-Trainer Offensive">DBB Mini-Trainer</option>
+                                <option value="FC Bayern Basketball">FC Bayern</option>
+                                <option value="ALBAthek">ALBAthek</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div id="exercisesList" class="exercises-list">
+                        <!-- Exercises will be loaded here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Trainingsplaner -->
+            <section id="planner" class="section">
+                <div class="container">
+                    <div class="section__header">
+                        <button class="btn btn--outline" id="backToPlanner">← Zurück</button>
+                        <h2>Trainingsplaner</h2>
+                    </div>
+                    
+                    <div class="planner__form">
+                        <h3>BBV-konforme 90-Minuten-Struktur</h3>
+                        <p class="mb-16">Aufwärmen (20 Min) → Schwerpunkt 1 (20 Min) → Zwischenblock (5 Min) → Schwerpunkt 2 (20 Min) → Zwischenblock (5 Min) → Spiel (15 Min) → Cool-down (5 Min)</p>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Altersgruppe</label>
+                            <select class="form-control" id="plannerAge" required>
+                                <option value="">Altersgruppe wählen</option>
+                                <option value="U8">U8</option>
+                                <option value="U10">U10</option>
+                                <option value="U12">U12</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">BBV-Hauptschwerpunkt</label>
+                            <select class="form-control" id="plannerFocus" required>
+                                <option value="">Schwerpunkt wählen</option>
+                            </select>
+                        </div>
+                        
+                        <button class="btn btn--primary btn--full-width" id="generatePlanBtn">Trainingsplan erstellen</button>
+                    </div>
+                    
+                    <div id="generatedPlan" class="training-plan" style="display: none;">
+                        <!-- Generated training plan will appear here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Spielerverwaltung -->
+            <section id="players" class="section">
+                <div class="container">
+                    <div class="section__header">
+                        <button class="btn btn--outline" id="backToPlayers">← Zurück</button>
+                        <h2>Spielerverwaltung</h2>
+                        <button class="btn btn--primary" id="addPlayerBtn">Neuer Spieler</button>
+                    </div>
+                    
+                    <div class="status status--info mb-16">
+                        <span>🔒 Alle Daten werden DSGVO-konform lokal gespeichert</span>
+                    </div>
+                    
+                    <div id="playersList" class="players-list">
+                        <!-- Players will be loaded here -->
                     </div>
                 </div>
             </section>
         </main>
-    </div>
 
-    <!-- Modal for Adding Hall -->
-    <div id="hallModal" class="modal hidden">
-        <div class="modal__backdrop"></div>
-        <div class="modal__content">
-            <div class="modal__header">
-                <h3>Neue Halle hinzufügen</h3>
-                <button class="modal__close">&times;</button>
-            </div>
-            <div class="modal__body">
-                <div class="form-group">
-                    <label class="form-label" for="hallName">Hallenname</label>
-                    <input type="text" id="hallName" class="form-control" placeholder="z.B. Sporthalle Grundschule">
+        <!-- Modal for Hall Creation -->
+        <div id="hallModal" class="modal">
+            <div class="modal__overlay" id="hallModalOverlay"></div>
+            <div class="modal__content">
+                <div class="modal__header">
+                    <h3>Neue Halle hinzufügen</h3>
+                    <button class="modal__close" id="hallModalClose">&times;</button>
                 </div>
-                
-                <h4>Verfügbares Material</h4>
-                <p>Geben Sie die Anzahl der verfügbaren Materialien an:</p>
-                <div class="equipment-grid">
-                    <div class="form-group">
-                        <label class="form-label" for="basketballs3">Basketbälle Größe 3</label>
-                        <input type="number" id="basketballs3" class="form-control" value="0" min="0" max="50">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="basketballs4">Basketbälle Größe 4</label>
-                        <input type="number" id="basketballs4" class="form-control" value="0" min="0" max="50">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="cones">Hütchen</label>
-                        <input type="number" id="cones" class="form-control" value="0" min="0" max="100">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="hoops">Reifen</label>
-                        <input type="number" id="hoops" class="form-control" value="0" min="0" max="50">
-                    </div>
+                <div class="modal__body">
+                    <form id="hallForm">
+                        <div class="form-group">
+                            <label class="form-label">Hallenname *</label>
+                            <input type="text" class="form-control" id="hallName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Adresse</label>
+                            <textarea class="form-control" id="hallAddress" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Equipment-Template</label>
+                            <select class="form-control" id="hallTemplate">
+                                <option value="">Kein Template</option>
+                                <option value="small">Kleine Halle (15 Bälle, 20 Hütchen, 2 Körbe)</option>
+                                <option value="medium">Mittlere Halle (20 Bälle, 30 Hütchen, 4 Körbe)</option>
+                                <option value="large">Große Halle (25 Bälle, 40 Hütchen, 6 Körbe)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Inventar</label>
+                            <textarea class="form-control" id="hallInventory" rows="4" placeholder="z.B. 15 Basketbälle Größe 4, 10 Hütchen, 2 Körbe 2,60m..."></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal__footer">
+                    <button class="btn btn--outline" id="hallModalCancel">Abbrechen</button>
+                    <button class="btn btn--primary" id="hallModalSave">Speichern</button>
                 </div>
             </div>
-            <div class="modal__footer">
-                <button class="btn btn--secondary" id="cancelHall">Abbrechen</button>
-                <button class="btn btn--primary" id="saveHall">Speichern</button>
+        </div>
+
+        <!-- Modal for Player Creation -->
+        <div id="playerModal" class="modal">
+            <div class="modal__overlay" id="playerModalOverlay"></div>
+            <div class="modal__content">
+                <div class="modal__header">
+                    <h3>Neuen Spieler hinzufügen</h3>
+                    <button class="modal__close" id="playerModalClose">&times;</button>
+                </div>
+                <div class="modal__body">
+                    <form id="playerForm">
+                        <div class="form-group">
+                            <label class="form-label">Vorname *</label>
+                            <input type="text" class="form-control" id="playerFirstName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Nachname *</label>
+                            <input type="text" class="form-control" id="playerLastName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Altersgruppe *</label>
+                            <select class="form-control" id="playerAge" required>
+                                <option value="">Altersgruppe wählen</option>
+                                <option value="U8">U8</option>
+                                <option value="U10">U10</option>
+                                <option value="U12">U12</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Notizen</label>
+                            <textarea class="form-control" id="playerNotes" rows="3" placeholder="Spezielle Fähigkeiten, Verbesserungsbereiche, etc."></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal__footer">
+                    <button class="btn btn--outline" id="playerModalCancel">Abbrechen</button>
+                    <button class="btn btn--primary" id="playerModalSave">Speichern</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercise Detail Modal -->
+        <div id="exerciseModal" class="modal">
+            <div class="modal__overlay" id="exerciseModalOverlay"></div>
+            <div class="modal__content modal__content--large">
+                <div class="modal__header">
+                    <h3 id="exerciseModalTitle">Übungsdetails</h3>
+                    <button class="modal__close" id="exerciseModalClose">&times;</button>
+                </div>
+                <div class="modal__body" id="exerciseModalBody">
+                    <!-- Exercise details will be loaded here -->
+                </div>
+                <div class="modal__footer">
+                    <button class="btn btn--outline" id="exerciseModalCancel">Schließen</button>
+                </div>
             </div>
         </div>
     </div>

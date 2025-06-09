@@ -1,1136 +1,810 @@
-// Vollständige Datenbank mit allen 30 BBV-Schwerpunkten und zugeordneten Übungen
-const appData = {
-  bbv_schwerpunkte: [
-    // Dribbling (1-4)
+// Real data with YouTube videos integration
+const EXERCISES = [
     {
-      id: 1,
-      titel: "Einführung des Dribblings",
-      kategorie: "Technik",
-      zielgruppe: ["U8", "U10", "U12"],
-      phase: "Einführung",
-      beschreibung: "Erstes Kennenlernen des Dribblings mit einfachen Übungen"
+        "id": "ballhandling_basics",
+        "title": "Ball Handling Basics",
+        "description": "Grundlegende Ballhandling-Übungen für alle Altersgruppen. Steffen Hamann zeigt verschiedene Ballführungsformen.",
+        "ageGroups": ["U8", "U10", "U12"],
+        "bbvFocus": [4],
+        "equipment": [{"name": "Basketbälle", "minAmount": 1, "perPlayer": true}],
+        "video": "https://www.youtube.com/watch?v=8qN3_7GQd6w",
+        "source": "FC Bayern Basketball",
+        "phase": "technique",
+        "setupTime": 2,
+        "helpersNeeded": 0
     },
     {
-      id: 2,
-      titel: "Schulung des Dribblings",
-      kategorie: "Technik",
-      zielgruppe: ["U10", "U12"],
-      phase: "Schulung",
-      beschreibung: "Verbesserung der Dribbeltechnik in verschiedenen Situationen"
+        "id": "spielfaehigkeit_anfaenger",
+        "title": "Spielfähigkeit Anfänger",
+        "description": "Einführung in Basketball für Anfänger mit spielerischen Formen und ersten Techniken.",
+        "ageGroups": ["U8", "U10"],
+        "bbvFocus": [1, 5],
+        "equipment": [{"name": "Basketbälle", "minAmount": 10, "perPlayer": false}, {"name": "Hütchen", "minAmount": 12, "perPlayer": false}],
+        "video": "https://www.youtube.com/watch?v=cEEmkMUco1M",
+        "source": "DBB Mini-Trainer Offensive",
+        "phase": "warmup",
+        "setupTime": 5,
+        "helpersNeeded": 1
     },
     {
-      id: 3,
-      titel: "Schulung eines Dribbelhandwechsels",
-      kategorie: "Technik",
-      zielgruppe: ["U10", "U12"],
-      phase: "Schulung",
-      beschreibung: "Erlernen von Handwechseltechniken im Dribbling"
+        "id": "stern_fitness",
+        "title": "Stern-Fitness", 
+        "description": "Koordination und Fitness in Sternform. Im Herzen Koordination, in den Zacken Fitness-Aufgaben.",
+        "ageGroups": ["U8", "U10", "U12"],
+        "bbvFocus": [15],
+        "equipment": [{"name": "Hütchen", "minAmount": 6, "perPlayer": false}, {"name": "Seile", "minAmount": 2, "perPlayer": false}],
+        "video": "https://www.youtube.com/watch?v=n-kDT29HtoU",
+        "source": "ALBAthek",
+        "phase": "warmup",
+        "setupTime": 8,
+        "helpersNeeded": 1
     },
     {
-      id: 4,
-      titel: "Schulung des Ballhandlings",
-      kategorie: "Technik",
-      zielgruppe: ["U8", "U10", "U12"],
-      phase: "Schulung",
-      beschreibung: "Vielseitige Ballgewöhnung und Ballkoordination"
-    },
-    // Passen und Fangen (5-6)
-    {
-      id: 5,
-      titel: "Einführung Passen und Fangen",
-      kategorie: "Technik",
-      zielgruppe: ["U8", "U10", "U12"],
-      phase: "Einführung",
-      beschreibung: "Grundlagen des Passens und Fangens"
+        "id": "dribbelstopp_sternschritt",
+        "title": "Dribbelstopp und Sternschritt",
+        "description": "Sprung- und Schrittstopp im Reifen, Dribbelstopp mit Sternschritt für bessere Ballkontrolle.",
+        "ageGroups": ["U10", "U12"],
+        "bbvFocus": [2, 3],
+        "equipment": [{"name": "Basketbälle", "minAmount": 8, "perPlayer": false}, {"name": "Reifen", "minAmount": 8, "perPlayer": false}],
+        "video": "https://www.youtube.com/watch?v=9a7G0FAPUlA",
+        "source": "DBB Mini-Trainer Offensive",
+        "phase": "technique",
+        "setupTime": 6,
+        "helpersNeeded": 0
     },
     {
-      id: 6,
-      titel: "Schulung Passen und Fangen",
-      kategorie: "Technik",
-      zielgruppe: ["U10", "U12"],
-      phase: "Schulung",
-      beschreibung: "Vertiefung verschiedener Passtechniken"
-    },
-    // Würfe (7-14)
-    {
-      id: 7,
-      titel: "Einführung Korbleger",
-      kategorie: "Technik",
-      zielgruppe: ["U8", "U10", "U12"],
-      phase: "Einführung",
-      beschreibung: "Erstes Erlernen des Korblegers"
+        "id": "spiele_schulstunde",
+        "title": "Spiele für die Schulstunde",
+        "description": "Vielfältige Basketball-Spiele für den Schulsport mit verschiedenen Schwierigkeitsgraden.",
+        "ageGroups": ["U8", "U10"],
+        "bbvFocus": [1, 5, 6],
+        "equipment": [{"name": "Basketbälle", "minAmount": 12, "perPlayer": false}, {"name": "Leibchen", "minAmount": 10, "perPlayer": false}],
+        "video": "https://www.youtube.com/watch?v=qs2a-XklrTA",
+        "source": "DBB Mini-Trainer Offensive", 
+        "phase": "application",
+        "setupTime": 3,
+        "helpersNeeded": 1
     },
     {
-      id: 8,
-      titel: "Schulung Korbleger",
-      kategorie: "Technik",
-      zielgruppe: ["U10", "U12"],
-      phase: "Schulung",
-      beschreibung: "Verbesserung und Variation des Korblegers"
+        "id": "big_men_training",
+        "title": "Big Men Training",
+        "description": "Spezielle Moves und Techniken für große Spieler unter dem Korb mit Steffen Hamann.",
+        "ageGroups": ["U12"],
+        "bbvFocus": [7, 8, 11],
+        "equipment": [{"name": "Basketbälle", "minAmount": 4, "perPlayer": false}, {"name": "Körbe", "minAmount": 2, "perPlayer": false}],
+        "video": "https://www.youtube.com/watch?v=MHw-XWNSSJ0",
+        "source": "FC Bayern Basketball",
+        "phase": "technique",
+        "setupTime": 5,
+        "helpersNeeded": 1
     },
     {
-      id: 9,
-      titel: "Einführung Powershot",
-      kategorie: "Technik",
-      zielgruppe: ["U8", "U10"],
-      phase: "Einführung",
-      beschreibung: "Grundlagen des Powershuts unter dem Korb"
+        "id": "zahlenfitness",
+        "title": "Zahlenfitness",
+        "description": "Zufallszahlen bestimmen Wiederholungen - mal wenig schwitzen, mal richtig anstrengend!",
+        "ageGroups": ["U8", "U10", "U12"],
+        "bbvFocus": [15],
+        "equipment": [{"name": "Würfel", "minAmount": 2, "perPlayer": false}],
+        "video": "https://www.youtube.com/watch?v=QHiTaOcATPM",
+        "source": "ALBAthek",
+        "phase": "warmup",
+        "setupTime": 2,
+        "helpersNeeded": 0
     },
     {
-      id: 10,
-      titel: "Schulung Powershot",
-      kategorie: "Technik",
-      zielgruppe: ["U10", "U12"],
-      phase: "Schulung",
-      beschreibung: "Vertiefung des Powershuts in verschiedenen Situationen"
-    },
-    {
-      id: 11,
-      titel: "Schulung von Korblegervarianten",
-      kategorie: "Technik",
-      zielgruppe: ["U12"],
-      phase: "Schulung",
-      beschreibung: "Verschiedene Korblegerarten und Finten"
-    },
-    {
-      id: 12,
-      titel: "Einführung Standwurf",
-      kategorie: "Technik",
-      zielgruppe: ["U10", "U12"],
-      phase: "Einführung",
-      beschreibung: "Grundlagen des Standwurfs"
-    },
-    {
-      id: 13,
-      titel: "Einführung Sprungwurf",
-      kategorie: "Technik",
-      zielgruppe: ["U12"],
-      phase: "Einführung",
-      beschreibung: "Erstes Erlernen des Sprungwurfs"
-    },
-    {
-      id: 14,
-      titel: "Schulung Sprungwurf",
-      kategorie: "Technik",
-      zielgruppe: ["U12"],
-      phase: "Schulung",
-      beschreibung: "Verbesserung der Sprungwurftechnik"
-    },
-    // Verteidigung (15-16)
-    {
-      id: 15,
-      titel: "Einführung Verteidigungsbeinarbeit",
-      kategorie: "Technik",
-      zielgruppe: ["U10", "U12"],
-      phase: "Einführung",
-      beschreibung: "Grundlagen der defensiven Beinarbeit"
-    },
-    {
-      id: 16,
-      titel: "Schulung Verteidigungsbeinarbeit",
-      kategorie: "Technik",
-      zielgruppe: ["U12"],
-      phase: "Schulung",
-      beschreibung: "Vertiefung der Verteidigungstechnik"
-    },
-    // Taktik Schnellangriff (17-19)
-    {
-      id: 17,
-      titel: "Einführung Schnellangriff",
-      kategorie: "Taktik",
-      zielgruppe: ["U10", "U12"],
-      phase: "Einführung",
-      beschreibung: "Grundlagen des schnellen Gegenangriffs"
-    },
-    {
-      id: 18,
-      titel: "Schulung Schnellangriff bis 3-2",
-      kategorie: "Taktik",
-      zielgruppe: ["U12"],
-      phase: "Schulung",
-      beschreibung: "Systematischer Aufbau von Überzahlsituationen"
-    },
-    {
-      id: 19,
-      titel: "Schulung der Unterzahlverteidigung",
-      kategorie: "Taktik",
-      zielgruppe: ["U12"],
-      phase: "Schulung",
-      beschreibung: "Verhalten in der Unterzahl"
-    },
-    // 1-gegen-1 (20-23)
-    {
-      id: 20,
-      titel: "Einführung Verteidigung 1-1 am Ball",
-      kategorie: "Taktik",
-      zielgruppe: ["U10", "U12"],
-      phase: "Einführung",
-      beschreibung: "Verteidigung gegen den Ballführer"
-    },
-    {
-      id: 21,
-      titel: "Schulung Verteidigung 1-1 am Ball",
-      kategorie: "Taktik",
-      zielgruppe: ["U12"],
-      phase: "Schulung",
-      beschreibung: "Vertiefung der 1-gegen-1 Verteidigung"
-    },
-    {
-      id: 22,
-      titel: "Einführung Verteidigung 1-1 am Flügel o. Ball",
-      kategorie: "Taktik",
-      zielgruppe: ["U12"],
-      phase: "Einführung",
-      beschreibung: "Verteidigung ohne Ball am Flügel"
-    },
-    {
-      id: 23,
-      titel: "Schulung Verteidigung 1-1 am Flügel o. Ball",
-      kategorie: "Taktik",
-      zielgruppe: ["U12"],
-      phase: "Schulung",
-      beschreibung: "Vertiefung der Flügelverteidigung"
-    },
-    // Angriffstaktik (24-29)
-    {
-      id: 24,
-      titel: "Schulung des Give and Go",
-      kategorie: "Taktik",
-      zielgruppe: ["U10", "U12"],
-      phase: "Schulung",
-      beschreibung: "Pass und Geh-Bewegung"
-    },
-    {
-      id: 25,
-      titel: "Einführung von Befreiungsbewegungen auf der Flügelposition",
-      kategorie: "Taktik",
-      zielgruppe: ["U12"],
-      phase: "Einführung",
-      beschreibung: "Freilaufen am Flügel"
-    },
-    {
-      id: 26,
-      titel: "Schulung von Befreiungsbewegungen auf der Flügelposition",
-      kategorie: "Taktik",
-      zielgruppe: ["U12"],
-      phase: "Schulung",
-      beschreibung: "Vertiefung der Flügelbewegungen"
-    },
-    {
-      id: 27,
-      titel: "Einführung eines einfachen Angriffskontinuums",
-      kategorie: "Taktik",
-      zielgruppe: ["U12"],
-      phase: "Einführung",
-      beschreibung: "Einfache Angriffszüge"
-    },
-    {
-      id: 28,
-      titel: "Einführung des Posting-up",
-      kategorie: "Taktik",
-      zielgruppe: ["U12"],
-      phase: "Einführung",
-      beschreibung: "Spiel mit dem Rücken zum Korb"
-    },
-    {
-      id: 29,
-      titel: "Schulung des Posting-up",
-      kategorie: "Taktik",
-      zielgruppe: ["U12"],
-      phase: "Schulung",
-      beschreibung: "Vertiefung des Post-Spiels"
-    },
-    // Komplextraining (30)
-    {
-      id: 30,
-      titel: "Durchführung eines Minitrainings mit drei Schwerpunkten",
-      kategorie: "Komplex",
-      zielgruppe: ["U8", "U10", "U12"],
-      phase: "Anwendung",
-      beschreibung: "Kombination mehrerer Trainingselemente"
+        "id": "maedchenbasketball_warmup",
+        "title": "Mädchenbasketball Warm-Up",
+        "description": "Hundehütte, Fischerspiel und Ballhandling-Übungen speziell für Mädchen-Teams.",
+        "ageGroups": ["U8", "U10", "U12"],
+        "bbvFocus": [1, 4],
+        "equipment": [{"name": "Basketbälle", "minAmount": 10, "perPlayer": false}, {"name": "Hütchen", "minAmount": 8, "perPlayer": false}],
+        "video": "https://www.youtube.com/watch?v=5ccGtkCcG98",
+        "source": "DBB Mini-Trainer Offensive",
+        "phase": "warmup",
+        "setupTime": 4,
+        "helpersNeeded": 0
     }
-  ],
+];
 
-  // Erweiterte Übungsdatenbank mit Schwerpunkt-Zuordnung
-  uebungen: {
-    // Lockere Spiele für Aufwärmen
-    lockere_spiele: [
-      {
-        id: "warm001",
-        titel: "Farben laufen",
-        schwerpunkt_ids: "alle",
-        beschreibung: "Laufen zu verschiedenen Farben auf Zuruf",
-        material: ["Hütchen"],
-        teilnehmer: "8-16",
-        dauer: 8,
-        altersgruppen: ["U8", "U10", "U12"]
-      },
-      {
-        id: "warm002",
-        titel: "Ballgewöhnung im Kreis",
-        schwerpunkt_ids: [1, 4, 5],
-        beschreibung: "Kinder stehen im Kreis und rollen sich Bälle zu",
-        material: ["Bälle"],
-        teilnehmer: "8-16",
-        dauer: 10,
-        altersgruppen: ["U8", "U10", "U12"]
-      },
-      {
-        id: "warm003",
-        titel: "Viereck-Lauf mit Ball",
-        schwerpunkt_ids: [1, 2],
-        beschreibung: "Laufen um Hütchen mit Ball tragen oder dribbeln",
-        material: ["Hütchen", "Bälle"],
-        teilnehmer: "8-16",
-        dauer: 10,
-        altersgruppen: ["U8", "U10", "U12"]
-      },
-      {
-        id: "warm004",
-        titel: "Ampelspiel",
-        schwerpunkt_ids: [1, 2, 15],
-        beschreibung: "Bei Rot stoppen, Gelb defensive Haltung, Grün laufen",
-        material: ["Farbkarten"],
-        teilnehmer: "8-16",
-        dauer: 8,
-        altersgruppen: ["U8", "U10"]
-      }
-    ],
+const BBV_FOCI = [
+    {"id": 1, "title": "Einführung des Dribblings", "category": "Technik"},
+    {"id": 2, "title": "Schulung des Dribblings", "category": "Technik"},
+    {"id": 3, "title": "Schulung eines Dribbelhandwechsels", "category": "Technik"},
+    {"id": 4, "title": "Schulung des Ballhandlings", "category": "Technik"},
+    {"id": 5, "title": "Einführung Passen und Fangen", "category": "Technik"},
+    {"id": 6, "title": "Schulung Passen und Fangen", "category": "Technik"},
+    {"id": 7, "title": "Einführung des Korblegers beidhändig", "category": "Technik"},
+    {"id": 8, "title": "Schulung des Korblegers beidhändig", "category": "Technik"},
+    {"id": 9, "title": "Einführung des Powershots", "category": "Technik"},
+    {"id": 10, "title": "Schulung des Powershots", "category": "Technik"},
+    {"id": 11, "title": "Schulung des Korblegers einhändig", "category": "Technik"},
+    {"id": 12, "title": "Einführung des Standwurfs", "category": "Technik"},
+    {"id": 13, "title": "Schulung des Standwurfs", "category": "Technik"},
+    {"id": 14, "title": "Einführung des Sprungwurfs", "category": "Technik"},
+    {"id": 15, "title": "Einführung der Verteidigungsbeinarbeit", "category": "Technik"},
+    {"id": 16, "title": "Schulung der Verteidigungsbeinarbeit", "category": "Technik"},
+    {"id": 17, "title": "Einführung des Schnellangriffs", "category": "Taktik"},
+    {"id": 18, "title": "Schulung des Schnellangriffs", "category": "Taktik"},
+    {"id": 19, "title": "Verteidigung gegen den Schnellangriff", "category": "Taktik"},
+    {"id": 20, "title": "1-1 offensiv am Ball", "category": "Taktik"},
+    {"id": 21, "title": "1-1 defensiv am Ball", "category": "Taktik"},
+    {"id": 22, "title": "1-1 offensiv ohne Ball", "category": "Taktik"},
+    {"id": 23, "title": "1-1 defensiv ohne Ball", "category": "Taktik"},
+    {"id": 24, "title": "Give and Go", "category": "Taktik"},
+    {"id": 25, "title": "Befreiungsbewegungen zum Ball", "category": "Taktik"},
+    {"id": 26, "title": "Befreiungsbewegungen vom Ball weg", "category": "Taktik"},
+    {"id": 27, "title": "Posting-up für Guards", "category": "Taktik"},
+    {"id": 28, "title": "Posting-up für Center", "category": "Taktik"},
+    {"id": 29, "title": "Angriff mit Kontinuität", "category": "Taktik"},
+    {"id": 30, "title": "Minitraining mit drei Schwerpunkten", "category": "Komplex"}
+];
 
-    // Technik-Übungen nach Schwerpunkten
-    technik: [
-      // Dribbling (1-4)
-      {
-        id: "tech001",
-        titel: "Ball 'liebevoll' dribbeln",
-        schwerpunkt_ids: [1, 4],
-        beschreibung: "Dribbeln im Stehen, Knien, Sitzen, verschiedene Höhen",
-        material: ["Bälle"],
-        teilnehmer: "beliebig",
-        dauer: 10,
-        altersgruppen: ["U8", "U10", "U12"]
-      },
-      {
-        id: "tech002",
-        titel: "Dribbling-Parcours",
-        schwerpunkt_ids: [1, 2],
-        beschreibung: "Slalom dribbeln zwischen Hütchen",
-        material: ["Bälle", "Hütchen"],
-        teilnehmer: "8-16",
-        dauer: 12,
-        altersgruppen: ["U8", "U10", "U12"]
-      },
-      {
-        id: "tech003",
-        titel: "Crossover-Übung",
-        schwerpunkt_ids: [3],
-        beschreibung: "Handwechsel vor Hütchen",
-        material: ["Bälle", "Hütchen"],
-        teilnehmer: "8-16",
-        dauer: 15,
-        altersgruppen: ["U10", "U12"]
-      },
-      {
-        id: "tech004",
-        titel: "Ballhandling-Kreis",
-        schwerpunkt_ids: [4],
-        beschreibung: "Ball um Körper, Beine, Achter",
-        material: ["Bälle"],
-        teilnehmer: "beliebig",
-        dauer: 10,
-        altersgruppen: ["U8", "U10", "U12"]
-      },
-
-      // Passen (5-6)
-      {
-        id: "tech005",
-        titel: "Partner-Pass im Stand",
-        schwerpunkt_ids: [5],
-        beschreibung: "Druckpass und Bodenpass zwischen Partnern",
-        material: ["Bälle"],
-        teilnehmer: "8-16",
-        dauer: 12,
-        altersgruppen: ["U8", "U10", "U12"]
-      },
-      {
-        id: "tech006",
-        titel: "Pass-Variationen",
-        schwerpunkt_ids: [6],
-        beschreibung: "Überkopfpass, Seitenpass, Pass in Bewegung",
-        material: ["Bälle", "Hütchen"],
-        teilnehmer: "8-16",
-        dauer: 15,
-        altersgruppen: ["U10", "U12"]
-      },
-
-      // Würfe (7-14)
-      {
-        id: "tech007",
-        titel: "Korbleger ohne Ball",
-        schwerpunkt_ids: [7],
-        beschreibung: "Schrittfolge und Sprung ohne Ball",
-        material: ["Hütchen"],
-        teilnehmer: "8-16",
-        dauer: 10,
-        altersgruppen: ["U8", "U10", "U12"]
-      },
-      {
-        id: "tech008",
-        titel: "Korbleger-Stationen",
-        schwerpunkt_ids: [8],
-        beschreibung: "Verschiedene Winkel und Distanzen",
-        material: ["Bälle", "Körbe"],
-        teilnehmer: "8-16",
-        dauer: 18,
-        altersgruppen: ["U10", "U12"]
-      },
-      {
-        id: "tech009",
-        titel: "Powershot unter dem Korb",
-        schwerpunkt_ids: [9, 10],
-        beschreibung: "Starker Wurf aus kurzer Distanz",
-        material: ["Bälle", "Körbe"],
-        teilnehmer: "6-12",
-        dauer: 15,
-        altersgruppen: ["U8", "U10", "U12"]
-      },
-      {
-        id: "tech010",
-        titel: "Standwurf-Technik",
-        schwerpunkt_ids: [12],
-        beschreibung: "Grundlagen des Standwurfs",
-        material: ["Bälle", "Körbe"],
-        teilnehmer: "8-16",
-        dauer: 15,
-        altersgruppen: ["U10", "U12"]
-      },
-
-      // Verteidigung (15-16)
-      {
-        id: "tech011",
-        titel: "Defensive Haltung",
-        schwerpunkt_ids: [15, 16],
-        beschreibung: "Grundstellung und Seitschritte",
-        material: ["Hütchen"],
-        teilnehmer: "8-16",
-        dauer: 12,
-        altersgruppen: ["U10", "U12"]
-      },
-      {
-        id: "tech012",
-        titel: "Spiegelübung",
-        schwerpunkt_ids: [15, 16, 20, 21],
-        beschreibung: "Partner imitiert Bewegungen des anderen",
-        material: [],
-        teilnehmer: "8-16",
-        dauer: 10,
-        altersgruppen: ["U10", "U12"]
-      }
-    ],
-
-    // Einspiel-Übungen (Anwendung der Technik)
-    einspiel: [
-      {
-        id: "game001",
-        titel: "1-gegen-1 Dribbling",
-        schwerpunkt_ids: [1, 2, 3],
-        beschreibung: "Verteidiger versucht Ball zu erobern",
-        material: ["Bälle", "Hütchen"],
-        teilnehmer: "8-16",
-        dauer: 12,
-        altersgruppen: ["U8", "U10", "U12"]
-      },
-      {
-        id: "game002",
-        titel: "Pass-Spiel 3-gegen-1",
-        schwerpunkt_ids: [5, 6, 24],
-        beschreibung: "Drei Angreifer gegen einen Verteidiger",
-        material: ["Bälle", "Hütchen"],
-        teilnehmer: "8-16",
-        dauer: 15,
-        altersgruppen: ["U10", "U12"]
-      },
-      {
-        id: "game003",
-        titel: "Korbleger-Wettbewerb",
-        schwerpunkt_ids: [7, 8, 11],
-        beschreibung: "Wer schafft mehr Korbleger in Zeit X",
-        material: ["Bälle", "Körbe"],
-        teilnehmer: "6-16",
-        dauer: 12,
-        altersgruppen: ["U8", "U10", "U12"]
-      },
-      {
-        id: "game004",
-        titel: "Schnellangriff 2-gegen-1",
-        schwerpunkt_ids: [17, 18],
-        beschreibung: "Überzahl-Situationen schnell ausspielen",
-        material: ["Bälle", "Körbe"],
-        teilnehmer: "6-12",
-        dauer: 15,
-        altersgruppen: ["U10", "U12"]
-      },
-      {
-        id: "game005",
-        titel: "Give and Go Spiel",
-        schwerpunkt_ids: [24],
-        beschreibung: "Pass und Geh in Spielsituationen",
-        material: ["Bälle", "Hütchen"],
-        teilnehmer: "8-12",
-        dauer: 15,
-        altersgruppen: ["U10", "U12"]
-      },
-      {
-        id: "game006",
-        titel: "3-gegen-3 mit Regeln",
-        schwerpunkt_ids: "alle_taktik",
-        beschreibung: "Kleinfeldspiel mit speziellen Regeln je nach Schwerpunkt",
-        material: ["Bälle", "Körbe", "Hütchen"],
-        teilnehmer: "6-12",
-        dauer: 15,
-        altersgruppen: ["U10", "U12"]
-      }
-    ]
-  },
-
-  training_structure: {
-    duration: 90,
-    blocks: [
-      {
-        name: "Aufwärmen",
-        duration: 20,
-        type: "warm_up",
-        description: "Lockere Spiele und allgemeine Aktivierung",
-        content_type: "lockere_spiele"
-      },
-      {
-        name: "Schwerpunkt-Technik",
-        duration: 25,
-        type: "main_focus",
-        description: "Methodische Übungsreihe zum gewählten Schwerpunkt",
-        content_type: "technik"
-      },
-      {
-        name: "Zwischenblock",
-        duration: 5,
-        type: "break",
-        description: "Freiwürfe, kurze Erholung"
-      },
-      {
-        name: "Einspiel",
-        duration: 20,
-        type: "application",
-        description: "Anwendung der gelernten Technik in Spielsituationen",
-        content_type: "einspiel"
-      },
-      {
-        name: "Freispiel",
-        duration: 15,
-        type: "free_play",
-        description: "3 gegen 3 oder 4 gegen 4 mit Schwerpunkt-Regeln"
-      },
-      {
-        name: "Cool-down",
-        duration: 5,
-        type: "cool_down",
-        description: "Entspannung, Reflexion, Dehnung"
-      }
-    ]
-  },
-
-  halls: [
-    {
-      id: "hall-001",
-      name: "Beispiel Sporthalle",
-      equipment: {
-        basketballs_size_3: 12,
-        basketballs_size_4: 8,
-        basketballs_size_5: 6,
-        cones: 20,
-        hoops: 15,
-        adjustable_baskets: true,
-        basket_height: "2.60m"
-      }
+const EQUIPMENT_TEMPLATES = {
+    "small": {
+        "name": "Kleine Halle",
+        "basketballs": 15,
+        "cones": 20,
+        "hoops": 12,
+        "pylons": 8,
+        "baskets": 2
+    },
+    "medium": {
+        "name": "Mittlere Halle",
+        "basketballs": 20,
+        "cones": 30,
+        "hoops": 20,
+        "pylons": 12,
+        "baskets": 4
+    },
+    "large": {
+        "name": "Große Halle",
+        "basketballs": 25,
+        "cones": 40,
+        "hoops": 30,
+        "pylons": 16,
+        "baskets": 6
     }
-  ]
 };
 
-// Application State
-let currentSection = 'dashboard';
-let currentTrainingPlan = null;
+const TRAININGSSTRUKTUR = {
+    "aufwaermen": {"dauer": 20, "beschreibung": "Aufwärmen - Lockere Spiele zur allgemeinen Aktivierung"},
+    "schwerpunkt1": {"dauer": 20, "beschreibung": "Schwerpunkt 1 - Haupttechnik-Einheit"},
+    "zwischenblock1": {"dauer": 5, "beschreibung": "Zwischenblock - Freiwürfe oder ruhige Ballführung"},
+    "schwerpunkt2": {"dauer": 20, "beschreibung": "Schwerpunkt 2 - Vertiefung oder zweiter Schwerpunkt"},
+    "zwischenblock2": {"dauer": 5, "beschreibung": "Zwischenblock - Regeneration vor der Spielphase"},
+    "spiel": {"dauer": 15, "beschreibung": "Spiel - Anwendung der gelernten Technik"},
+    "cooldown": {"dauer": 5, "beschreibung": "Cool-down - Entspannung und Reflexion"}
+};
 
-// DOM Elements
-const navItems = document.querySelectorAll('.nav__item');
-const sections = document.querySelectorAll('.section');
-const dashboardCards = document.querySelectorAll('.dashboard__card');
-
-// Initialize Application
-document.addEventListener('DOMContentLoaded', function() {
-  initializeNavigation();
-  initializeDashboard();
-  initializePlanner();
-  initializeExercises();
-  initializeHalls();
-  loadInitialData();
-});
-
-// Navigation System
-function initializeNavigation() {
-  navItems.forEach(item => {
-    item.addEventListener('click', () => {
-      const targetSection = item.dataset.section;
-      switchSection(targetSection);
-    });
-  });
+// YouTube helper functions
+function getYouTubeVideoId(url) {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    return (match && match[2].length === 11) ? match[2] : null;
 }
 
-function switchSection(sectionName) {
-  // Update navigation
-  navItems.forEach(item => {
-    item.classList.toggle('nav__item--active', item.dataset.section === sectionName);
-  });
-  
-  // Update sections
-  sections.forEach(section => {
-    section.classList.toggle('section--active', section.id === sectionName);
-  });
-  
-  currentSection = sectionName;
+function createYouTubeEmbed(videoUrl) {
+    const videoId = getYouTubeVideoId(videoUrl);
+    if (!videoId) return '';
+    
+    return `
+        <div class="video-container">
+            <iframe 
+                src="https://www.youtube.com/embed/${videoId}" 
+                title="YouTube video" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    `;
 }
 
-// Dashboard functionality
-function initializeDashboard() {
-  dashboardCards.forEach(card => {
-    card.addEventListener('click', () => {
-      const action = card.dataset.action;
-      if (action) {
-        switchSection(action);
-      }
-    });
-  });
-}
-
-// Training Planner
-function initializePlanner() {
-  const schwerpunktSelect = document.getElementById('schwerpunkt');
-  const generateBtn = document.getElementById('generatePlan');
-  const exportBtn = document.getElementById('exportPlan');
-  const newPlanBtn = document.getElementById('newPlan');
-  
-  // Populate schwerpunkt dropdown
-  appData.bbv_schwerpunkte.forEach(schwerpunkt => {
-    const option = document.createElement('option');
-    option.value = schwerpunkt.id;
-    option.textContent = `${schwerpunkt.id}. ${schwerpunkt.titel} (${schwerpunkt.kategorie})`;
-    schwerpunktSelect.appendChild(option);
-  });
-  
-  generateBtn.addEventListener('click', generateTrainingPlan);
-  exportBtn.addEventListener('click', exportTrainingPlan);
-  newPlanBtn.addEventListener('click', resetPlanner);
-}
-
-function generateTrainingPlan() {
-  const schwerpunktId = parseInt(document.getElementById('schwerpunkt').value);
-  const altersgruppe = document.getElementById('altersgruppe').value;
-  const teilnehmer = document.getElementById('teilnehmer').value;
-  const halle = document.getElementById('halle').value;
-  
-  if (!schwerpunktId) {
-    alert('Bitte wählen Sie einen Trainingsschwerpunkt aus.');
-    return;
-  }
-  
-  const selectedSchwerpunkt = appData.bbv_schwerpunkte.find(s => s.id === schwerpunktId);
-  
-  // Check if schwerpunkt is suitable for age group
-  if (!selectedSchwerpunkt.zielgruppe.includes(altersgruppe)) {
-    alert(`Dieser Schwerpunkt ist nicht für ${altersgruppe} geeignet. Geeignete Altersgruppen: ${selectedSchwerpunkt.zielgruppe.join(', ')}`);
-    return;
-  }
-  
-  currentTrainingPlan = {
-    schwerpunkt: selectedSchwerpunkt,
-    altersgruppe,
-    teilnehmer,
-    halle,
-    blocks: createTrainingBlocks(selectedSchwerpunkt, altersgruppe)
-  };
-  
-  displayTrainingPlan();
-}
-
-function createTrainingBlocks(schwerpunkt, altersgruppe) {
-  return appData.training_structure.blocks.map(block => {
-    const exercises = getExercisesForBlock(block, schwerpunkt.id, altersgruppe);
-    return {
-      ...block,
-      exercises
-    };
-  });
-}
-
-function getExercisesForBlock(block, schwerpunktId, altersgruppe) {
-  switch (block.type) {
-    case 'warm_up':
-      // Lockere Spiele für Aufwärmen
-      return appData.uebungen.lockere_spiele
-        .filter(ex => 
-          ex.altersgruppen.includes(altersgruppe) && 
-          (ex.schwerpunkt_ids === "alle" || ex.schwerpunkt_ids.includes(schwerpunktId))
-        )
-        .slice(0, 2);
-        
-    case 'main_focus':
-      // Technik-Übungen für den gewählten Schwerpunkt
-      return appData.uebungen.technik
-        .filter(ex => 
-          ex.schwerpunkt_ids.includes(schwerpunktId) && 
-          ex.altersgruppen.includes(altersgruppe)
-        )
-        .slice(0, 3);
-        
-    case 'application':
-      // Einspiel-Übungen für Anwendung
-      return appData.uebungen.einspiel
-        .filter(ex => 
-          ex.altersgruppen.includes(altersgruppe) && 
-          (ex.schwerpunkt_ids.includes(schwerpunktId) || 
-           ex.schwerpunkt_ids === "alle_taktik" && schwerpunkt.kategorie === "Taktik")
-        )
-        .slice(0, 2);
-        
-    case 'free_play':
-      return [{
-        titel: "3 gegen 3 Spiel",
-        beschreibung: `Kleinfeldspiel mit Fokus auf ${appData.bbv_schwerpunkte.find(s => s.id === schwerpunktId).titel}`,
-        dauer: 15
-      }];
-      
-    case 'break':
-      return [{
-        titel: "Freiwürfe",
-        beschreibung: "Freie Würfe zur Erholung",
-        dauer: 5
-      }];
-      
-    case 'cool_down':
-      return [{
-        titel: "Abschlusskreis",
-        beschreibung: "Reflexion und leichtes Stretching",
-        dauer: 5
-      }];
-      
-    default:
-      return [];
-  }
-}
-
-function displayTrainingPlan() {
-  const planContainer = document.getElementById('trainingPlan');
-  const blocksContainer = document.getElementById('trainingBlocks');
-  const schwerpunktSpan = document.getElementById('planSchwerpunkt');
-  const altersgruppeSpan = document.getElementById('planAltersgruppe');
-  
-  // Update header info
-  schwerpunktSpan.textContent = currentTrainingPlan.schwerpunkt.titel;
-  altersgruppeSpan.textContent = currentTrainingPlan.altersgruppe;
-  
-  // Clear previous blocks
-  blocksContainer.innerHTML = '';
-  
-  // Create training blocks
-  currentTrainingPlan.blocks.forEach(block => {
-    const blockElement = createTrainingBlockElement(block);
-    blocksContainer.appendChild(blockElement);
-  });
-  
-  // Show the plan
-  planContainer.classList.remove('hidden');
-}
-
-function createTrainingBlockElement(block) {
-  const blockDiv = document.createElement('div');
-  blockDiv.className = 'training-block';
-  
-  const exerciseTags = block.exercises.map(ex => 
-    `<span class="exercise-tag" title="${ex.beschreibung || ''}">${ex.titel}</span>`
-  ).join('');
-  
-  blockDiv.innerHTML = `
-    <div class="training-block__time">${block.duration} Min</div>
-    <div class="training-block__content">
-      <div class="training-block__title">${block.name}</div>
-      <div class="training-block__description">${block.description}</div>
-      <div class="training-block__exercises">${exerciseTags}</div>
-    </div>
-  `;
-  
-  return blockDiv;
-}
-
-function exportTrainingPlan() {
-  if (!currentTrainingPlan) return;
-  
-  const planText = generateExportText();
-  const blob = new Blob([planText], { type: 'text/plain' });
-  const url = URL.createObjectURL(blob);
-  
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = `Trainingsplan_${currentTrainingPlan.schwerpunkt.titel.replace(/\s+/g, '_')}_${new Date().toLocaleDateString('de-DE')}.txt`;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-}
-
-function generateExportText() {
-  let text = `TRAININGSPLAN - 90 MINUTEN\n`;
-  text += `${'='.repeat(50)}\n\n`;
-  text += `Schwerpunkt: ${currentTrainingPlan.schwerpunkt.titel}\n`;
-  text += `Kategorie: ${currentTrainingPlan.schwerpunkt.kategorie}\n`;
-  text += `Altersgruppe: ${currentTrainingPlan.altersgruppe}\n`;
-  text += `Teilnehmer: ${currentTrainingPlan.teilnehmer}\n`;
-  text += `Datum: ${new Date().toLocaleDateString('de-DE')}\n\n`;
-  
-  currentTrainingPlan.blocks.forEach(block => {
-    text += `${block.name} (${block.duration} Min)\n`;
-    text += `${'-'.repeat(block.name.length + 10)}\n`;
-    text += `${block.description}\n`;
-    if (block.exercises && block.exercises.length > 0) {
-      text += `Übungen:\n`;
-      block.exercises.forEach(ex => {
-        text += `  • ${ex.titel}`;
-        if (ex.beschreibung) text += ` - ${ex.beschreibung}`;
-        if (ex.material) text += ` (Material: ${ex.material.join(', ')})`;
-        text += '\n';
-      });
+// Application state
+class AppState {
+    constructor() {
+        this.currentSection = 'dashboard';
+        this.halls = JSON.parse(localStorage.getItem('minibasketball_halls') || '[]');
+        this.players = JSON.parse(localStorage.getItem('minibasketball_players') || '[]');
+        this.exercises = EXERCISES;
+        this.schwerpunkte = BBV_FOCI;
+        this.filteredExercises = [...this.exercises];
     }
-    text += '\n';
-  });
-  
-  text += `\nHinweise:\n`;
-  text += `- Schema: Lockeres Spiel → Technik → Einspiel\n`;
-  text += `- Schwerpunkt durchgehend beachten\n`;
-  text += `- An Leistungsstand der Gruppe anpassen\n`;
-  
-  return text;
+
+    saveHalls() {
+        localStorage.setItem('minibasketball_halls', JSON.stringify(this.halls));
+    }
+
+    savePlayers() {
+        localStorage.setItem('minibasketball_players', JSON.stringify(this.players));
+    }
+
+    addHall(hall) {
+        hall.id = Date.now().toString();
+        this.halls.push(hall);
+        this.saveHalls();
+    }
+
+    deleteHall(id) {
+        this.halls = this.halls.filter(hall => hall.id !== id);
+        this.saveHalls();
+    }
+
+    addPlayer(player) {
+        player.id = Date.now().toString();
+        this.players.push(player);
+        this.savePlayers();
+    }
+
+    deletePlayer(id) {
+        this.players = this.players.filter(player => player.id !== id);
+        this.savePlayers();
+    }
+
+    applyEquipmentTemplate(template) {
+        return EQUIPMENT_TEMPLATES[template] || null;
+    }
 }
 
-function resetPlanner() {
-  document.getElementById('schwerpunkt').value = '';
-  document.getElementById('trainingPlan').classList.add('hidden');
-  currentTrainingPlan = null;
+// Application instance
+const app = new AppState();
+
+// Modal management
+class ModalManager {
+    static openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.classList.add('modal--active');
+            document.body.style.overflow = 'hidden';
+            
+            // Focus management
+            const firstFocusable = modal.querySelector('input, select, textarea, button');
+            if (firstFocusable) {
+                firstFocusable.focus();
+            }
+        }
+    }
+
+    static closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.classList.remove('modal--active');
+            document.body.style.overflow = '';
+            
+            // Reset form if present
+            const form = modal.querySelector('form');
+            if (form) {
+                form.reset();
+            }
+        }
+    }
+
+    static closeAllModals() {
+        const modals = document.querySelectorAll('.modal');
+        modals.forEach(modal => {
+            modal.classList.remove('modal--active');
+        });
+        document.body.style.overflow = '';
+    }
+
+    static setupModalHandlers(modalId) {
+        const modal = document.getElementById(modalId);
+        if (!modal) return;
+
+        // Close button
+        const closeBtn = modal.querySelector('.modal__close');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => this.closeModal(modalId));
+        }
+
+        // Cancel button
+        const cancelBtn = modal.querySelector(`#${modalId}Cancel`);
+        if (cancelBtn) {
+            cancelBtn.addEventListener('click', () => this.closeModal(modalId));
+        }
+
+        // Overlay click
+        const overlay = modal.querySelector('.modal__overlay');
+        if (overlay) {
+            overlay.addEventListener('click', () => this.closeModal(modalId));
+        }
+
+        // Escape key
+        modal.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                this.closeModal(modalId);
+            }
+        });
+    }
 }
 
-// Exercises Database
-function initializeExercises() {
-  const categoryFilter = document.getElementById('filterCategory');
-  const ageFilter = document.getElementById('filterAge');
-  const schwerpunktFilter = document.getElementById('filterSchwerpunkt');
-  
-  // Populate schwerpunkt filter
-  if (schwerpunktFilter) {
-    appData.bbv_schwerpunkte.forEach(schwerpunkt => {
-      const option = document.createElement('option');
-      option.value = schwerpunkt.id;
-      option.textContent = schwerpunkt.titel;
-      schwerpunktFilter.appendChild(option);
+// Navigation
+function showSection(sectionId) {
+    // Hide all sections
+    document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('section--active');
     });
-  }
-  
-  categoryFilter.addEventListener('change', filterExercises);
-  ageFilter.addEventListener('change', filterExercises);
-  if (schwerpunktFilter) schwerpunktFilter.addEventListener('change', filterExercises);
-  
-  displayAllExercises();
+
+    // Show target section
+    const targetSection = document.getElementById(sectionId);
+    if (targetSection) {
+        targetSection.classList.add('section--active');
+        app.currentSection = sectionId;
+    }
+
+    // Close any open modals when navigating
+    ModalManager.closeAllModals();
+}
+
+// Hall management
+function renderHalls() {
+    const container = document.getElementById('hallsList');
+    
+    if (app.halls.length === 0) {
+        container.innerHTML = `
+            <div class="empty-state">
+                <div class="empty-state__icon">🏟️</div>
+                <h3 class="empty-state__title">Keine Hallen vorhanden</h3>
+                <p class="empty-state__description">Fügen Sie Ihre erste Trainingshalle hinzu</p>
+            </div>
+        `;
+        return;
+    }
+
+    container.innerHTML = app.halls.map(hall => `
+        <div class="hall-item">
+            <div class="hall-item__header">
+                <h3 class="hall-item__name">${hall.name}</h3>
+                <div class="item-actions">
+                    <button class="btn btn--danger btn--sm" onclick="deleteHall('${hall.id}')">Löschen</button>
+                </div>
+            </div>
+            ${hall.address ? `<p class="hall-item__address">${hall.address}</p>` : ''}
+            ${hall.inventory ? `<div class="hall-item__inventory">${hall.inventory}</div>` : ''}
+            ${hall.template ? `<div class="hall-item__template">Template: ${hall.template}</div>` : ''}
+        </div>
+    `).join('');
+}
+
+function deleteHall(id) {
+    if (confirm('Möchten Sie diese Halle wirklich löschen?')) {
+        app.deleteHall(id);
+        renderHalls();
+    }
+}
+
+// Exercise management
+function renderExercises() {
+    const container = document.getElementById('exercisesList');
+    
+    if (app.filteredExercises.length === 0) {
+        container.innerHTML = `
+            <div class="empty-state">
+                <div class="empty-state__icon">📚</div>
+                <h3 class="empty-state__title">Keine Übungen gefunden</h3>
+                <p class="empty-state__description">Versuchen Sie andere Filtereinstellungen</p>
+            </div>
+        `;
+        return;
+    }
+
+    container.innerHTML = app.filteredExercises.map(exercise => `
+        <div class="exercise-item" onclick="showExerciseDetail('${exercise.id}')">
+            <div class="exercise-item__header">
+                <h3 class="exercise-item__title">${exercise.title}</h3>
+                <div class="exercise-item__meta-badges">
+                    <span class="exercise-item__source">${exercise.source}</span>
+                    <span class="exercise-item__category">${getSchwerpunktKategorie(exercise.bbvFocus[0])}</span>
+                </div>
+            </div>
+            <p class="exercise-item__description">${exercise.description}</p>
+            <div class="exercise-item__meta">
+                <span>⏱️ ${exercise.setupTime} Min Setup</span>
+                <span>👥 ${exercise.helpersNeeded} Helfer</span>
+                <div class="exercise-item__ages">
+                    ${exercise.ageGroups.map(age => `<span class="exercise-item__age">${age}</span>`).join('')}
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function getSchwerpunktKategorie(schwerpunktId) {
+    const schwerpunkt = app.schwerpunkte.find(s => s.id === schwerpunktId);
+    return schwerpunkt ? schwerpunkt.category : 'Unbekannt';
 }
 
 function filterExercises() {
-  const categoryFilter = document.getElementById('filterCategory').value;
-  const ageFilter = document.getElementById('filterAge').value;
-  const schwerpunktFilter = document.getElementById('filterSchwerpunkt');
-  const schwerpunktValue = schwerpunktFilter ? schwerpunktFilter.value : '';
-  
-  let allExercises = [
-    ...appData.uebungen.lockere_spiele.map(ex => ({...ex, kategorie: 'Lockeres Spiel'})),
-    ...appData.uebungen.technik.map(ex => ({...ex, kategorie: 'Technik'})),
-    ...appData.uebungen.einspiel.map(ex => ({...ex, kategorie: 'Einspiel'}))
-  ];
-  
-  let filteredExercises = allExercises;
-  
-  if (categoryFilter) {
-    filteredExercises = filteredExercises.filter(ex => ex.kategorie === categoryFilter);
-  }
-  
-  if (ageFilter) {
-    filteredExercises = filteredExercises.filter(ex => ex.altersgruppen.includes(ageFilter));
-  }
-  
-  if (schwerpunktValue) {
-    const schwerpunktId = parseInt(schwerpunktValue);
-    filteredExercises = filteredExercises.filter(ex => 
-      ex.schwerpunkt_ids === "alle" || 
-      ex.schwerpunkt_ids === "alle_taktik" ||
-      ex.schwerpunkt_ids.includes(schwerpunktId)
+    const categoryFilter = document.getElementById('categoryFilter').value;
+    const ageFilter = document.getElementById('ageFilter').value;
+    const sourceFilter = document.getElementById('sourceFilter')?.value || '';
+
+    app.filteredExercises = app.exercises.filter(exercise => {
+        const matchesCategory = !categoryFilter || getSchwerpunktKategorie(exercise.bbvFocus[0]) === categoryFilter;
+        const matchesAge = !ageFilter || exercise.ageGroups.includes(ageFilter);
+        const matchesSource = !sourceFilter || exercise.source === sourceFilter;
+        return matchesCategory && matchesAge && matchesSource;
+    });
+
+    renderExercises();
+}
+
+function showExerciseDetail(exerciseId) {
+    const exercise = app.exercises.find(ex => ex.id === exerciseId);
+    if (!exercise) return;
+
+    const modal = document.getElementById('exerciseModal');
+    const title = document.getElementById('exerciseModalTitle');
+    const body = document.getElementById('exerciseModalBody');
+
+    title.textContent = exercise.title;
+    
+    const schwerpunkteTitles = exercise.bbvFocus
+        .map(id => app.schwerpunkte.find(s => s.id === id))
+        .filter(s => s)
+        .map(s => s.title);
+
+    const videoEmbed = exercise.video ? createYouTubeEmbed(exercise.video) : '';
+
+    body.innerHTML = `
+        ${videoEmbed}
+        
+        <div class="exercise-detail__meta">
+            <div class="exercise-detail__meta-item">
+                <div class="exercise-detail__meta-label">Setup-Zeit</div>
+                <div class="exercise-detail__meta-value">${exercise.setupTime} Min</div>
+            </div>
+            <div class="exercise-detail__meta-item">
+                <div class="exercise-detail__meta-label">Phase</div>
+                <div class="exercise-detail__meta-value">${exercise.phase}</div>
+            </div>
+            <div class="exercise-detail__meta-item">
+                <div class="exercise-detail__meta-label">Helfer</div>
+                <div class="exercise-detail__meta-value">${exercise.helpersNeeded}</div>
+            </div>
+            <div class="exercise-detail__meta-item">
+                <div class="exercise-detail__meta-label">Quelle</div>
+                <div class="exercise-detail__meta-value">${exercise.source}</div>
+            </div>
+        </div>
+        
+        <div class="exercise-detail__ages">
+            <h4>Altersgruppen</h4>
+            <div class="exercise-detail__age-list">
+                ${exercise.ageGroups.map(age => `<span class="exercise-detail__age">${age}</span>`).join('')}
+            </div>
+        </div>
+        
+        <div class="exercise-detail__description">
+            <h4>Beschreibung</h4>
+            <p>${exercise.description}</p>
+        </div>
+        
+        <div class="exercise-detail__schwerpunkte">
+            <h4>BBV-Schwerpunkte</h4>
+            <ul>
+                ${schwerpunkteTitles.map(titel => `<li>${titel}</li>`).join('')}
+            </ul>
+        </div>
+        
+        <div class="exercise-detail__equipment">
+            <h4>Benötigtes Equipment</h4>
+            <ul>
+                ${exercise.equipment.map(item => `
+                    <li>${item.name}: ${item.minAmount} ${item.perPlayer ? 'pro Spieler' : 'insgesamt'}</li>
+                `).join('')}
+            </ul>
+        </div>
+    `;
+
+    ModalManager.openModal('exerciseModal');
+}
+
+// Training planner
+function updatePlannerFocus() {
+    const ageSelect = document.getElementById('plannerAge');
+    const focusSelect = document.getElementById('plannerFocus');
+    const selectedAge = ageSelect.value;
+
+    // Clear focus options
+    focusSelect.innerHTML = '<option value="">Schwerpunkt wählen</option>';
+
+    if (selectedAge) {
+        // Filter exercises that have this age group and get their BBV foci
+        const relevantExercises = app.exercises.filter(ex => ex.ageGroups.includes(selectedAge));
+        const availableFociIds = [...new Set(relevantExercises.flatMap(ex => ex.bbvFocus))];
+        
+        const availableFoci = app.schwerpunkte.filter(s => availableFociIds.includes(s.id));
+
+        availableFoci.forEach(focus => {
+            const option = document.createElement('option');
+            option.value = focus.id;
+            option.textContent = `${focus.title} (${focus.category})`;
+            focusSelect.appendChild(option);
+        });
+    }
+}
+
+function generateTrainingPlan() {
+    const age = document.getElementById('plannerAge').value;
+    const focusId = parseInt(document.getElementById('plannerFocus').value);
+
+    if (!age || !focusId) {
+        alert('Bitte wählen Sie Altersgruppe und Schwerpunkt aus.');
+        return;
+    }
+
+    const focus = app.schwerpunkte.find(s => s.id === focusId);
+    const suitableExercises = app.exercises.filter(ex => 
+        ex.ageGroups.includes(age) && 
+        ex.bbvFocus.includes(focusId)
     );
-  }
-  
-  displayExercises(filteredExercises);
+
+    const plan = generatePlanStructure(focus, suitableExercises, age);
+    renderTrainingPlan(plan);
 }
 
-function displayAllExercises() {
-  let allExercises = [
-    ...appData.uebungen.lockere_spiele.map(ex => ({...ex, kategorie: 'Lockeres Spiel'})),
-    ...appData.uebungen.technik.map(ex => ({...ex, kategorie: 'Technik'})),
-    ...appData.uebungen.einspiel.map(ex => ({...ex, kategorie: 'Einspiel'}))
-  ];
-  
-  displayExercises(allExercises);
+function generatePlanStructure(focus, exercises, age) {
+    const phases = Object.keys(TRAININGSSTRUKTUR);
+    const plan = {
+        title: `Trainingsplan ${age} - ${focus.title}`,
+        phases: phases.map(phase => {
+            const phaseConfig = TRAININGSSTRUKTUR[phase];
+            const phaseExercises = getExercisesForPhase(phase, exercises, age);
+            
+            return {
+                name: phase,
+                title: getPhaseTitle(phase),
+                duration: phaseConfig.dauer,
+                description: phaseConfig.beschreibung,
+                exercises: phaseExercises
+            };
+        })
+    };
+
+    return plan;
 }
 
-function displayExercises(exercises) {
-  const container = document.getElementById('exercisesList');
-  container.innerHTML = '';
-  
-  if (exercises.length === 0) {
-    container.innerHTML = '<p class="text-center">Keine Übungen für die gewählten Filter gefunden.</p>';
-    return;
-  }
-  
-  exercises.forEach(exercise => {
-    const exerciseCard = createExerciseCard(exercise);
-    container.appendChild(exerciseCard);
-  });
+function getPhaseTitle(phase) {
+    const titles = {
+        'aufwaermen': 'Aufwärmen',
+        'schwerpunkt1': 'Schwerpunkt 1',
+        'zwischenblock1': 'Zwischenblock 1',
+        'schwerpunkt2': 'Schwerpunkt 2',
+        'zwischenblock2': 'Zwischenblock 2',
+        'spiel': 'Spiel',
+        'cooldown': 'Cool-down'
+    };
+    return titles[phase] || phase;
 }
 
-function createExerciseCard(exercise) {
-  const card = document.createElement('div');
-  card.className = 'exercise-card';
-  
-  const ageTags = exercise.altersgruppen.map(age => `<span class="age-tag">${age}</span>`).join('');
-  const materialText = exercise.material ? exercise.material.join(', ') : 'Kein Material';
-  
-  // Get schwerpunkt names
-  let schwerpunktText = '';
-  if (exercise.schwerpunkt_ids === "alle") {
-    schwerpunktText = 'Alle Schwerpunkte';
-  } else if (exercise.schwerpunkt_ids === "alle_taktik") {
-    schwerpunktText = 'Alle Taktik-Schwerpunkte';
-  } else if (Array.isArray(exercise.schwerpunkt_ids)) {
-    const schwerpunkte = exercise.schwerpunkt_ids.map(id => {
-      const sp = appData.bbv_schwerpunkte.find(s => s.id === id);
-      return sp ? sp.titel : `SP${id}`;
+function getExercisesForPhase(phase, exercises, age) {
+    if (phase === 'aufwaermen') {
+        return app.exercises.filter(ex => 
+            ex.phase === 'warmup' && ex.ageGroups.includes(age)
+        ).slice(0, 2);
+    }
+    
+    if (phase === 'schwerpunkt1' || phase === 'schwerpunkt2') {
+        return exercises.filter(ex => ex.phase === 'technique').slice(0, 2);
+    }
+    
+    if (phase === 'spiel') {
+        return app.exercises.filter(ex => 
+            ex.phase === 'application' && ex.ageGroups.includes(age)
+        ).slice(0, 1);
+    }
+    
+    return [];
+}
+
+function renderTrainingPlan(plan) {
+    const container = document.getElementById('generatedPlan');
+    
+    container.innerHTML = `
+        <div class="training-plan__header">
+            <h3>${plan.title}</h3>
+            <p>Gesamtdauer: 90 Minuten (BBV-konforme Struktur)</p>
+            <button class="btn btn--outline btn--sm" onclick="exportPlan()">Plan exportieren</button>
+        </div>
+        ${plan.phases.map(phase => `
+            <div class="training-plan__phase">
+                <div class="training-plan__phase-header">
+                    <h4 class="training-plan__phase-title">${phase.title}</h4>
+                    <span class="training-plan__phase-duration">${phase.duration} Min</span>
+                </div>
+                <p class="training-plan__phase-description">${phase.description}</p>
+                ${phase.exercises.length > 0 ? `
+                    <ul class="training-plan__exercises">
+                        ${phase.exercises.map(ex => `
+                            <li class="training-plan__exercise" onclick="showExerciseDetail('${ex.id}')">
+                                <div class="training-plan__exercise-info">
+                                    <span class="training-plan__exercise-title">${ex.title}</span>
+                                    <span class="training-plan__exercise-source">${ex.source}</span>
+                                </div>
+                                <span class="training-plan__exercise-time">${ex.setupTime} Min Setup</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                ` : '<p class="training-plan__no-exercises">Freie Gestaltung oder Pausen</p>'}
+            </div>
+        `).join('')}
+    `;
+    
+    container.style.display = 'block';
+}
+
+function exportPlan() {
+    alert('Export-Funktion wird implementiert (PDF-Generation)');
+}
+
+// Player management
+function renderPlayers() {
+    const container = document.getElementById('playersList');
+    
+    if (app.players.length === 0) {
+        container.innerHTML = `
+            <div class="empty-state">
+                <div class="empty-state__icon">👥</div>
+                <h3 class="empty-state__title">Keine Spieler vorhanden</h3>
+                <p class="empty-state__description">Fügen Sie Ihren ersten Spieler hinzu</p>
+            </div>
+        `;
+        return;
+    }
+
+    container.innerHTML = app.players.map(player => `
+        <div class="player-item">
+            <div class="player-item__header">
+                <h3 class="player-item__name">${player.firstName} ${player.lastName}</h3>
+                <div class="item-actions">
+                    <span class="player-item__age">${player.age}</span>
+                    <button class="btn btn--danger btn--sm" onclick="deletePlayer('${player.id}')">Löschen</button>
+                </div>
+            </div>
+            ${player.notes ? `<p class="player-item__notes">${player.notes}</p>` : ''}
+        </div>
+    `).join('');
+}
+
+function deletePlayer(id) {
+    if (confirm('Möchten Sie diesen Spieler wirklich löschen?')) {
+        app.deletePlayer(id);
+        renderPlayers();
+    }
+}
+
+// Equipment template functions
+function loadEquipmentTemplate() {
+    const templateSelect = document.getElementById('hallTemplate');
+    const inventoryTextarea = document.getElementById('hallInventory');
+    
+    if (templateSelect && inventoryTextarea) {
+        const template = app.applyEquipmentTemplate(templateSelect.value);
+        if (template) {
+            const inventory = Object.entries(template)
+                .filter(([key]) => key !== 'name')
+                .map(([key, value]) => `${value} ${key}`)
+                .join('\n');
+            inventoryTextarea.value = inventory;
+        }
+    }
+}
+
+// Event handlers
+function setupEventHandlers() {
+    // Dashboard navigation
+    document.querySelectorAll('.dashboard__card').forEach(card => {
+        card.addEventListener('click', () => {
+            const section = card.dataset.section;
+            showSection(section);
+            
+            // Load section-specific data
+            if (section === 'halls') renderHalls();
+            if (section === 'exercises') renderExercises();
+            if (section === 'players') renderPlayers();
+        });
     });
-    schwerpunktText = schwerpunkte.join(', ');
-  }
-  
-  card.innerHTML = `
-    <div class="exercise-card__header">
-      <h3 class="exercise-card__title">${exercise.titel}</h3>
-      <span class="exercise-card__duration">${exercise.dauer} Min</span>
-    </div>
-    <div class="exercise-card__category">${exercise.kategorie}</div>
-    <div class="exercise-card__description">${exercise.beschreibung}</div>
-    <div class="exercise-card__schwerpunkte">${schwerpunktText}</div>
-    <div class="exercise-card__meta">
-      <div class="exercise-card__ages">${ageTags}</div>
-      <div class="exercise-card__material">Material: ${materialText}</div>
-    </div>
-  `;
-  
-  return card;
-}
 
-// Hall Management - Fixed modal handling
-function initializeHalls() {
-  const addHallBtn = document.getElementById('addHall');
-  
-  if (addHallBtn) {
-    addHallBtn.addEventListener('click', () => {
-      const modal = document.getElementById('hallModal');
-      if (modal) {
-        showModal(modal);
-      }
+    // Back buttons
+    document.getElementById('backToHalls').addEventListener('click', () => showSection('dashboard'));
+    document.getElementById('backToExercises').addEventListener('click', () => showSection('dashboard'));
+    document.getElementById('backToPlanner').addEventListener('click', () => showSection('dashboard'));
+    document.getElementById('backToPlayers').addEventListener('click', () => showSection('dashboard'));
+
+    // Hall management
+    document.getElementById('addHallBtn').addEventListener('click', () => {
+        ModalManager.openModal('hallModal');
     });
-  }
-  
-  // Initialize modal event listeners when modal exists
-  const modal = document.getElementById('hallModal');
-  if (modal) {
-    const closeBtn = modal.querySelector('.modal__close');
-    const cancelBtn = document.getElementById('cancelHall');
-    const saveBtn = document.getElementById('saveHall');
-    const backdrop = modal.querySelector('.modal__backdrop');
+
+    document.getElementById('hallModalSave').addEventListener('click', () => {
+        const form = document.getElementById('hallForm');
+        if (form.checkValidity()) {
+            const hallData = {
+                name: document.getElementById('hallName').value,
+                address: document.getElementById('hallAddress').value,
+                inventory: document.getElementById('hallInventory').value,
+                template: document.getElementById('hallTemplate')?.value || ''
+            };
+            
+            app.addHall(hallData);
+            renderHalls();
+            ModalManager.closeModal('hallModal');
+        } else {
+            form.reportValidity();
+        }
+    });
+
+    // Player management
+    document.getElementById('addPlayerBtn').addEventListener('click', () => {
+        ModalManager.openModal('playerModal');
+    });
+
+    document.getElementById('playerModalSave').addEventListener('click', () => {
+        const form = document.getElementById('playerForm');
+        if (form.checkValidity()) {
+            const playerData = {
+                firstName: document.getElementById('playerFirstName').value,
+                lastName: document.getElementById('playerLastName').value,
+                age: document.getElementById('playerAge').value,
+                notes: document.getElementById('playerNotes').value
+            };
+            
+            app.addPlayer(playerData);
+            renderPlayers();
+            ModalManager.closeModal('playerModal');
+        } else {
+            form.reportValidity();
+        }
+    });
+
+    // Exercise filters
+    document.getElementById('categoryFilter').addEventListener('change', filterExercises);
+    document.getElementById('ageFilter').addEventListener('change', filterExercises);
     
-    if (closeBtn) {
-      closeBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        hideModal(modal);
-      });
+    // Check if source filter exists
+    const sourceFilter = document.getElementById('sourceFilter');
+    if (sourceFilter) {
+        sourceFilter.addEventListener('change', filterExercises);
     }
-    
-    if (cancelBtn) {
-      cancelBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        hideModal(modal);
-      });
+
+    // Training planner
+    document.getElementById('plannerAge').addEventListener('change', updatePlannerFocus);
+    document.getElementById('generatePlanBtn').addEventListener('click', generateTrainingPlan);
+
+    // Equipment template handler
+    const hallTemplateSelect = document.getElementById('hallTemplate');
+    if (hallTemplateSelect) {
+        hallTemplateSelect.addEventListener('change', loadEquipmentTemplate);
     }
-    
-    if (backdrop) {
-      backdrop.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        hideModal(modal);
-      });
-    }
-    
-    if (saveBtn) {
-      saveBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        saveNewHall();
-      });
-    }
-    
-    // Escape key handler
+
+    // Global escape key handler
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-        hideModal(modal);
-      }
+        if (e.key === 'Escape') {
+            ModalManager.closeAllModals();
+        }
     });
-  }
-  
-  displayHalls();
 }
 
-function showModal(modal) {
-  if (modal) {
-    modal.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-  }
+// Initialize application
+function initApp() {
+    console.log('🏀 Minibasketball Trainer App wird initialisiert...');
+    
+    // Setup modal handlers for all modals
+    ModalManager.setupModalHandlers('hallModal');
+    ModalManager.setupModalHandlers('playerModal');
+    ModalManager.setupModalHandlers('exerciseModal');
+    
+    // Setup event handlers
+    setupEventHandlers();
+    
+    // CRITICAL: Ensure we start with dashboard and NO modals open
+    showSection('dashboard');
+    ModalManager.closeAllModals();
+    
+    console.log('✅ App erfolgreich initialisiert - Dashboard ist aktiv');
+    console.log(`📊 ${app.exercises.length} Übungen mit YouTube-Videos verfügbar`);
 }
 
-function hideModal(modal) {
-  if (modal) {
-    modal.classList.add('hidden');
-    document.body.style.overflow = '';
-    clearHallForm();
-  }
-}
-
-function clearHallForm() {
-  const hallName = document.getElementById('hallName');
-  const basketballs3 = document.getElementById('basketballs3');
-  const basketballs4 = document.getElementById('basketballs4');
-  const cones = document.getElementById('cones');
-  const hoops = document.getElementById('hoops');
-  
-  if (hallName) hallName.value = '';
-  if (basketballs3) basketballs3.value = '0';
-  if (basketballs4) basketballs4.value = '0';
-  if (cones) cones.value = '0';
-  if (hoops) hoops.value = '0';
-}
-
-function saveNewHall() {
-  const hallName = document.getElementById('hallName');
-  const name = hallName ? hallName.value.trim() : '';
-  
-  if (!name) {
-    alert('Bitte geben Sie einen Hallennamen ein.');
-    return;
-  }
-  
-  const basketballs3 = document.getElementById('basketballs3');
-  const basketballs4 = document.getElementById('basketballs4');
-  const cones = document.getElementById('cones');
-  const hoops = document.getElementById('hoops');
-  
-  const newHall = {
-    id: `hall-${Date.now()}`,
-    name: name,
-    equipment: {
-      basketballs_size_3: basketballs3 ? parseInt(basketballs3.value) || 0 : 0,
-      basketballs_size_4: basketballs4 ? parseInt(basketballs4.value) || 0 : 0,
-      cones: cones ? parseInt(cones.value) || 0 : 0,
-      hoops: hoops ? parseInt(hoops.value) || 0 : 0,
-      adjustable_baskets: true,
-      basket_height: "2.60m"
-    }
-  };
-  
-  appData.halls.push(newHall);
-  displayHalls();
-  populateHallSelect();
-  
-  const modal = document.getElementById('hallModal');
-  hideModal(modal);
-}
-
-function displayHalls() {
-  const container = document.getElementById('hallsList');
-  if (!container) return;
-  
-  container.innerHTML = '';
-  
-  appData.halls.forEach(hall => {
-    const hallCard = createHallCard(hall);
-    container.appendChild(hallCard);
-  });
-}
-
-function createHallCard(hall) {
-  const card = document.createElement('div');
-  card.className = 'hall-card';
-  
-  card.innerHTML = `
-    <h3 class="hall-card__title">${hall.name}</h3>
-    <div class="equipment-list">
-      <div class="equipment-item">
-        <span>Basketbälle Gr. 3</span>
-        <span class="equipment-item__count">${hall.equipment.basketballs_size_3}</span>
-      </div>
-      <div class="equipment-item">
-        <span>Basketbälle Gr. 4</span>
-        <span class="equipment-item__count">${hall.equipment.basketballs_size_4}</span>
-      </div>
-      <div class="equipment-item">
-        <span>Hütchen</span>
-        <span class="equipment-item__count">${hall.equipment.cones}</span>
-      </div>
-      <div class="equipment-item">
-        <span>Reifen</span>
-        <span class="equipment-item__count">${hall.equipment.hoops}</span>
-      </div>
-      <div class="equipment-item">
-        <span>Korbhöhe</span>
-        <span class="equipment-item__count">${hall.equipment.basket_height}</span>
-      </div>
-    </div>
-  `;
-  
-  return card;
-}
-
-function populateHallSelect() {
-  const hallSelect = document.getElementById('halle');
-  if (!hallSelect) return;
-  
-  hallSelect.innerHTML = '<option value="">Halle wählen...</option>';
-  
-  appData.halls.forEach(hall => {
-    const option = document.createElement('option');
-    option.value = hall.id;
-    option.textContent = hall.name;
-    hallSelect.appendChild(option);
-  });
-}
-
-function loadInitialData() {
-  populateHallSelect();
-}
+// Start the application when DOM is ready
+document.addEventListener('DOMContentLoaded', initApp);
