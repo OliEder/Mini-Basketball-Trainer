@@ -61,10 +61,12 @@
                   "format": "date"
                 },
                 "uhrzeit_start": {
-                  "type": "string"
+                  "type": "string",
+                  "format": "time"
                 },
                 "uhrzeit_end": {
-                  "type": "string"
+                  "type": "string",
+                  "format": "time"
                 },
                 "altersgruppe": {
                   "type": "string"
